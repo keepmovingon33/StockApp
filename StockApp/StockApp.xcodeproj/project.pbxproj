@@ -101,7 +101,6 @@
 				74306D77614822E98EF48078 /* Pods-StockAppTests.debug.xcconfig */,
 				0723C550C25E571A6B0D0806 /* Pods-StockAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,13 +129,9 @@
 		3368AAA825F057A600D8D360 /* StockApp */ = {
 			isa = PBXGroup;
 			children = (
-				3368AAA925F057A600D8D360 /* AppDelegate.swift */,
-				3368AAAB25F057A600D8D360 /* SceneDelegate.swift */,
-				3368AAAD25F057A600D8D360 /* ViewController.swift */,
-				3368AAAF25F057A600D8D360 /* Main.storyboard */,
-				3368AAB225F057A800D8D360 /* Assets.xcassets */,
-				3368AAB425F057A800D8D360 /* LaunchScreen.storyboard */,
-				3368AAB725F057A800D8D360 /* Info.plist */,
+				3368AAE225F058CD00D8D360 /* Apps */,
+				3368AAE625F0590D00D8D360 /* Resources */,
+				3368AAEB25F0594300D8D360 /* ViewControllers */,
 			);
 			path = StockApp;
 			sourceTree = "<group>";
@@ -157,6 +152,42 @@
 				3368AACD25F057A900D8D360 /* Info.plist */,
 			);
 			path = StockAppUITests;
+			sourceTree = "<group>";
+		};
+		3368AAE225F058CD00D8D360 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				3368AAA925F057A600D8D360 /* AppDelegate.swift */,
+				3368AAAB25F057A600D8D360 /* SceneDelegate.swift */,
+				3368AAB725F057A800D8D360 /* Info.plist */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		3368AAE625F0590D00D8D360 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3368AAB225F057A800D8D360 /* Assets.xcassets */,
+				3368AAE725F0592200D8D360 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3368AAE725F0592200D8D360 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3368AAAF25F057A600D8D360 /* Main.storyboard */,
+				3368AAB425F057A800D8D360 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3368AAEB25F0594300D8D360 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3368AAAD25F057A600D8D360 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		FF12EC3651419A1D45B7E75C /* Frameworks */ = {
@@ -552,7 +583,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ML5C6ZYMKV;
-				INFOPLIST_FILE = StockApp/Info.plist;
+				INFOPLIST_FILE = StockApp/Apps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,7 +603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ML5C6ZYMKV;
-				INFOPLIST_FILE = StockApp/Info.plist;
+				INFOPLIST_FILE = StockApp/Apps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
