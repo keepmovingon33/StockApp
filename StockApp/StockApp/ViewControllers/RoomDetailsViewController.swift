@@ -33,6 +33,51 @@ class RoomDetailsViewController: UIViewController {
     @IBOutlet weak var lockImage: UIImageView!
     
     
+    @IBOutlet weak var roomModeUserView: UIView!
+    @IBOutlet weak var roomModeLabel: UILabel!
+    @IBOutlet weak var roomModeValueLabel: UILabel!
+    
+    @IBOutlet weak var roomModeOwnerView: UIView!
+    @IBOutlet weak var roomModeOwnerLabel: UILabel!
+    
+    @IBOutlet weak var publicImage: UIImageView!
+    @IBOutlet weak var publicLabel: UILabel!
+    @IBOutlet weak var privateImage: UIImageView!
+    @IBOutlet weak var privateLabel: UILabel!
+    @IBOutlet weak var secretImage: UIImageView!
+    @IBOutlet weak var secretLabel: UILabel!
+    @IBOutlet weak var modeDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var displaySettingLabel: UILabel!
+    @IBOutlet weak var displaySettingImage: UIImageView!
+    
+    @IBOutlet weak var messageSearchLabel: UILabel!
+    @IBOutlet weak var messageSearchImage: UIImageView!
+    
+    
+    @IBOutlet weak var memberListLabel: UILabel!
+    @IBOutlet weak var memberListImage: UIImageView!
+    
+    @IBOutlet weak var memberBlockView: UIView!
+    @IBOutlet weak var MemberblockLabel: UILabel!
+    @IBOutlet weak var memberBlockImage: UIImageView!
+    
+    @IBOutlet weak var suggestionNotiView: UIView!
+    @IBOutlet weak var suggestionNotiLabel: UILabel!
+    @IBOutlet weak var suggestionNotiSwitchButton: UISwitch!
+    
+    @IBOutlet weak var messageNotiLabel: UILabel!
+    @IBOutlet weak var messageNotiSwitchButton: UISwitch!
+    
+    @IBOutlet weak var reportAndLeaveView: UIStackView!
+    
+    @IBOutlet weak var reportLabel: UILabel!
+    @IBOutlet weak var reportImage: UIImageView!
+    
+    
+    @IBOutlet weak var leaveLabel: UILabel!
+    @IBOutlet weak var leaveImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,6 +106,31 @@ class RoomDetailsViewController: UIViewController {
         avatarImage.image = UIImage(named: "avatar")
         ownerImage.image = UIImage(named: "owner_admin")
         lockImage.image = UIImage(named: "lock")
+        messageSearchImage.image = UIImage(named: "search")
+        memberListImage.image = UIImage(named: "icon_arrow")
+        displaySettingImage.image = UIImage(named: "icon_arrow")
+        memberBlockImage.image = UIImage(named: "icon_arrow")
+        reportImage.image = UIImage(named: "icon_arrow")
+        leaveImage.image = UIImage(named: "icon_arrow")
+        messageNotiSwitchButton.onTintColor = .purple
+        suggestionNotiSwitchButton.onTintColor = .purple
+                
+        
+        roomModeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.roomMode, attributes: TextFormatting.blackTitle)
+        roomModeValueLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.publicMode, attributes: TextFormatting.purpleValue)
+        roomModeOwnerLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.roomMode, attributes: TextFormatting.blackTitle)
+        modeDescriptionLabel.attributedText = NSAttributedString(string: "Ai cũng có thể thấy phòng trên danh sách các phòng và có thể tham gia phòng không cần xét duyệt.", attributes: TextFormatting.greyValue)
+        displaySettingLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.displaySetting, attributes: TextFormatting.blackTitle)
+        publicLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.publicMode, attributes: TextFormatting.purpleValue)
+        privateLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.privateMode, attributes: TextFormatting.purpleValue)
+        secretLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.secretMode, attributes: TextFormatting.purpleValue)
+        messageSearchLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.messageSearch, attributes: TextFormatting.blackTitle)
+        memberListLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.memberList, attributes: TextFormatting.blackTitle)
+        MemberblockLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.memberBlock, attributes: TextFormatting.blackTitle)
+        suggestionNotiLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.suggestionNoti, attributes: TextFormatting.blackTitle)
+        messageNotiLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.messageNoti, attributes: TextFormatting.blackTitle)
+        reportLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.report, attributes: TextFormatting.blackTitle)
+        leaveLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.leave, attributes: TextFormatting.redText)
         
     }
 }
