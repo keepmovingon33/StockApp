@@ -10,6 +10,10 @@ import UIKit
 class RoomDetailsViewController: UIViewController {
 
     
+    @IBOutlet weak var roomDetailsBottomView: UIView!
+    @IBOutlet weak var roomActionUIView: UIView!
+    @IBOutlet weak var stackViewBottom: UIStackView!
+    
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!
@@ -48,6 +52,9 @@ class RoomDetailsViewController: UIViewController {
     @IBOutlet weak var secretLabel: UILabel!
     @IBOutlet weak var modeDescriptionLabel: UILabel!
     
+    
+    @IBOutlet weak var descriptionView: UIView!
+    
     @IBOutlet weak var displaySettingLabel: UILabel!
     @IBOutlet weak var displaySettingImage: UIImageView!
     
@@ -83,6 +90,13 @@ class RoomDetailsViewController: UIViewController {
 
         configureUI()
     }
+
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setupShadow()
+    }
     
     private func configureUI() {
         nameLabel.attributedText = NSAttributedString(string: "Phòng Tư Vấn Chứng Khoán Ngành Ngân Hàng", attributes: TextFormatting.blackHeader)
@@ -102,6 +116,8 @@ class RoomDetailsViewController: UIViewController {
         DescriptionLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.description, attributes: TextFormatting.blackTitle)
         descriptionValueLabel.attributedText = NSAttributedString(string: "Phòng của Broker Nguyễn Tấn Tài, phí tư vấn 1 tháng là 50k/tháng.", attributes: TextFormatting.greyValue)
         
+        descriptionView.backgroundColor = UIColor.init(hexString: "#F3F6FF")
+        
         arrowImage.image = UIImage(named: "icon_arrow")
         avatarImage.image = UIImage(named: "avatar")
         ownerImage.image = UIImage(named: "owner_admin")
@@ -112,9 +128,12 @@ class RoomDetailsViewController: UIViewController {
         memberBlockImage.image = UIImage(named: "icon_arrow")
         reportImage.image = UIImage(named: "icon_arrow")
         leaveImage.image = UIImage(named: "icon_arrow")
-        messageNotiSwitchButton.onTintColor = .purple
-        suggestionNotiSwitchButton.onTintColor = .purple
-                
+        messageNotiSwitchButton.onTintColor = UIColor.init(hexString: "#9676F9")
+        suggestionNotiSwitchButton.onTintColor = UIColor.init(hexString: "#9676F9")
+        
+        publicImage.image = UIImage(named: "selected")
+        privateImage.image = UIImage(named: "unselected")
+        secretImage.image = UIImage(named: "unselected")
         
         roomModeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.roomMode, attributes: TextFormatting.blackTitle)
         roomModeValueLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.publicMode, attributes: TextFormatting.purpleValue)
@@ -131,6 +150,18 @@ class RoomDetailsViewController: UIViewController {
         messageNotiLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.messageNoti, attributes: TextFormatting.blackTitle)
         reportLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.report, attributes: TextFormatting.blackTitle)
         leaveLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.leave, attributes: TextFormatting.redText)
+    }
+    
+    private func setupShadow() {
+        editButton.setBorderRadius(with: 4, color: UIColor.init(hexString: "#3F27B1"), width: 0.5)
         
+        roomDetailsBottomView.backgroundColor =  .white
+        roomDetailsBottomView.setBorderRadius(with: 8)
+        roomDetailsBottomView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0.5, height: 0.5), radius: 8, scale: true)
+        
+        stackViewBottom.backgroundColor = UIColor.init(hexString: "#F5F2FF")
+        stackViewBottom.setBorderRadius(with: 8)
+        roomActionUIView.backgroundColor = .clear
+        roomActionUIView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0.5, height: 0.5), radius: 8, scale: true)
     }
 }
