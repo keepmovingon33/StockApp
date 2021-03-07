@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>lock</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#9573E7" offset="0%"></stop>
+            <stop stop-color="#6978E3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="UI-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="message/my-room/info-" transform="translate(-216.000000, -126.000000)">
+            <g id="content-block-1" transform="translate(16.000000, 118.000000)">
+                <g id="img" transform="translate(132.000000, 0.000000)">
+                    <g id="lock" transform="translate(68.000000, 8.000000)">
+                        <circle id="Oval" stroke="#FFFFFF" fill="url(#linearGradient-1)" cx="12" cy="12" r="11.5"></circle>
+                        <path d="M9.91304659,10.4347708 L14.0869596,10.4347708 L14.0869596,8.8695534 C14.0869596,7.720098 13.1494635,6.78259688 12.0000031,6.78259688 C10.8505477,6.78259688 9.91304659,7.720098 9.91304659,8.8695534 L9.91304659,10.4347708 Z M16.6956634,11.2173776 L16.6956634,15.9130425 C16.6956634,16.3451083 16.3451195,16.6956522 15.9130537,16.6956522 L8.08695745,16.6956522 C7.65489172,16.6956522 7.30434783,16.3451083 7.30434783,15.9130425 L7.30434783,11.2173776 C7.30434783,10.785319 7.65489172,10.4347689 8.08695745,10.4347689 L8.34782609,10.4347689 L8.34782609,8.86955153 C8.34782609,6.86411871 9.99456842,5.21737762 12,5.21737762 C14.0054428,5.21737762 15.6521739,6.86411871 15.6521739,8.86955153 L15.6521739,10.4347689 L15.9130537,10.4347689 C16.3451195,10.4347689 16.6956634,10.785319 16.6956634,11.2173776 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
