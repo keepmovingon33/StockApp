@@ -12,11 +12,11 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
-        self.clipsToBounds = true
+        self.layer.masksToBounds = true
     }
     
     func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
-        self.clipsToBounds = false
+        self.layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
@@ -26,4 +26,24 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
       }
+}
+
+@IBDesignable class CardView: UIView {
+    @IBInspectable var shadowColor: UIColor = UIColor(hexString: "#DCC7FF"){
+            didSet {
+                updateShadow()
+            }
+        }
+    
+        public func updateShadow() {
+            layer.shadowColor = shadowColor.cgColor
+            layer.shadowOffset = .zero
+            layer.shadowOpacity = 6
+            layer.masksToBounds = false
+        }
+        
+        open override func layoutSubviews() {
+            super.layoutSubviews()
+            updateShadow()
+        }
 }

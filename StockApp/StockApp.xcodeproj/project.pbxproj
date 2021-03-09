@@ -29,6 +29,10 @@
 		3368AB3325F5235200D8D360 /* JoiningRoomItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AB3125F5235200D8D360 /* JoiningRoomItemViewCell.swift */; };
 		3368AB3425F5235200D8D360 /* JoiningRoomItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3368AB3225F5235200D8D360 /* JoiningRoomItemViewCell.xib */; };
 		3368AB4E25F59E0C00D8D360 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AB4D25F59E0C00D8D360 /* UICollectionView+Extension.swift */; };
+		3368AB5725F6796D00D8D360 /* HomeBrokerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AB5525F6796D00D8D360 /* HomeBrokerViewCell.swift */; };
+		3368AB5825F6796D00D8D360 /* HomeBrokerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3368AB5625F6796D00D8D360 /* HomeBrokerViewCell.xib */; };
+		3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AB5C25F67AF300D8D360 /* BrokerItemViewCell.swift */; };
+		3368AB5F25F67AF300D8D360 /* BrokerItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3368AB5D25F67AF300D8D360 /* BrokerItemViewCell.xib */; };
 		DF8FB11255FE919512096955 /* Pods_StockAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9562976BB53A2DE614B399 /* Pods_StockAppTests.framework */; };
 		FDCA10F8CE8240C1CDC740F5 /* Pods_StockApp_StockAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14E44B759122D5AE566741 /* Pods_StockApp_StockAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +86,10 @@
 		3368AB3125F5235200D8D360 /* JoiningRoomItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningRoomItemViewCell.swift; sourceTree = "<group>"; };
 		3368AB3225F5235200D8D360 /* JoiningRoomItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoiningRoomItemViewCell.xib; sourceTree = "<group>"; };
 		3368AB4D25F59E0C00D8D360 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		3368AB5525F6796D00D8D360 /* HomeBrokerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrokerViewCell.swift; sourceTree = "<group>"; };
+		3368AB5625F6796D00D8D360 /* HomeBrokerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeBrokerViewCell.xib; sourceTree = "<group>"; };
+		3368AB5C25F67AF300D8D360 /* BrokerItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerItemViewCell.swift; sourceTree = "<group>"; };
+		3368AB5D25F67AF300D8D360 /* BrokerItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrokerItemViewCell.xib; sourceTree = "<group>"; };
 		597DBC4A68B3818F47B60367 /* Pods-StockApp-StockAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp-StockAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EE8D61C13B0683595F06570 /* Pods-StockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.debug.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.debug.xcconfig"; sourceTree = "<group>"; };
 		74306D77614822E98EF48078 /* Pods-StockAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.debug.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +273,10 @@
 				3368AB2B25F5221A00D8D360 /* JoiningRoomViewCell.xib */,
 				3368AB3125F5235200D8D360 /* JoiningRoomItemViewCell.swift */,
 				3368AB3225F5235200D8D360 /* JoiningRoomItemViewCell.xib */,
+				3368AB5525F6796D00D8D360 /* HomeBrokerViewCell.swift */,
+				3368AB5625F6796D00D8D360 /* HomeBrokerViewCell.xib */,
+				3368AB5C25F67AF300D8D360 /* BrokerItemViewCell.swift */,
+				3368AB5D25F67AF300D8D360 /* BrokerItemViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +397,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3368AB5825F6796D00D8D360 /* HomeBrokerViewCell.xib in Resources */,
+				3368AB5F25F67AF300D8D360 /* BrokerItemViewCell.xib in Resources */,
 				3368AB2625F51EF700D8D360 /* HomeHeaderViewCell.xib in Resources */,
 				3368AAB625F057A800D8D360 /* LaunchScreen.storyboard in Resources */,
 				3368AAB325F057A800D8D360 /* Assets.xcassets in Resources */,
@@ -487,11 +501,13 @@
 			files = (
 				3368AAFE25F306B000D8D360 /* Formatting.swift in Sources */,
 				3368AB0925F4510200D8D360 /* UIView+Extension.swift in Sources */,
+				3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */,
 				3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */,
 				3368AB2125F51EE700D8D360 /* HomeHeaderViewCell.swift in Sources */,
 				3368AB4E25F59E0C00D8D360 /* UICollectionView+Extension.swift in Sources */,
 				3368AB1425F519D900D8D360 /* HomeViewController.swift in Sources */,
 				3368AAAC25F057A600D8D360 /* SceneDelegate.swift in Sources */,
+				3368AB5725F6796D00D8D360 /* HomeBrokerViewCell.swift in Sources */,
 				3368AB0425F308B900D8D360 /* UIColor+Extension.swift in Sources */,
 				3368AAF025F05A8D00D8D360 /* RoomDetailsViewController.swift in Sources */,
 				3368AB2C25F5221A00D8D360 /* JoiningRoomViewCell.swift in Sources */,
