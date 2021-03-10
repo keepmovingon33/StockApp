@@ -12,18 +12,16 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
-        self.clipsToBounds = true
+        // khi masksToBounds = true nghia la nhung cai view khac ko duoc trao ra khoi view do. Nen minh dung view nay de tao border. Va view border luon luon la lop ben trong
+        self.layer.masksToBounds = true
     }
     
-    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
-        self.clipsToBounds = false
+    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1) {
+        // khi masksToBounds = false thi minh moi set shadow duoc boi vi nhung view minh tao ra duoc trao ra khoi view do. Va view shadow luon luon la lop ben ngoai
+        self.layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
         layer.shadowRadius = radius
-
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
       }
 }
