@@ -52,9 +52,9 @@ class JoiningRoomItemViewCell: UICollectionViewCell {
         ownerImage.image = UIImage(named: "owner_user")
         avatarImage.image = UIImage(named: "avatar")
         nameLabel.attributedText = NSAttributedString(string: name, attributes: TextFormatting.blackMediumTitle)
-        winRateLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.smallGreyRegular)
-        totalStockLabel.attributedText = NSAttributedString(string: "6 ma", attributes: TextFormatting.smallGreyRegular)
-        createdTimeLabel.attributedText = NSAttributedString(string: "24 thang", attributes: TextFormatting.smallGreyRegular)
-        memberLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.smallGreyRegular)
+        winRateLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.smallGrayRegular)
+        totalStockLabel.attributedText = NSAttributedString(string: "6 ma", attributes: TextFormatting.smallGrayRegular)
+        createdTimeLabel.attributedText = NSAttributedString(string: "24 thang", attributes: TextFormatting.smallGrayRegular)
+        memberLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.smallGrayRegular)
     }
 }

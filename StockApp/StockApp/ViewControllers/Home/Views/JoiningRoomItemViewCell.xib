@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUr-8D-SdX">
-                        <rect key="frame" x="0.0" y="0.0" width="317" height="398"/>
+                        <rect key="frame" x="0.0" y="0.0" width="317" height="384.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-lq-hsi">
                                 <rect key="frame" x="0.0" y="0.0" width="301" height="301"/>
@@ -158,7 +158,7 @@
                             <constraint firstAttribute="trailing" secondItem="vFL-aL-7sY" secondAttribute="trailing" constant="16" id="Yrn-67-6En"/>
                             <constraint firstItem="eKo-GF-I8q" firstAttribute="top" secondItem="SI3-lq-hsi" secondAttribute="top" constant="8" id="Zbj-Sp-SoN"/>
                             <constraint firstItem="1YH-nQ-fs7" firstAttribute="top" secondItem="vFL-aL-7sY" secondAttribute="bottom" constant="4" id="aRF-Fb-We8"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1YH-nQ-fs7" secondAttribute="bottom" id="atU-mQ-eHk"/>
+                            <constraint firstAttribute="bottom" secondItem="1YH-nQ-fs7" secondAttribute="bottom" id="atU-mQ-eHk"/>
                             <constraint firstItem="J23-YF-mWp" firstAttribute="leading" secondItem="SI3-lq-hsi" secondAttribute="leading" id="d5B-pG-eZC"/>
                             <constraint firstItem="SI3-lq-hsi" firstAttribute="top" secondItem="KUr-8D-SdX" secondAttribute="top" id="fg9-iP-dZJ"/>
                             <constraint firstItem="vFL-aL-7sY" firstAttribute="leading" secondItem="KUr-8D-SdX" secondAttribute="leading" id="m1h-cP-Mn1"/>
@@ -172,7 +172,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="KUr-8D-SdX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ojn-v4-2nk"/>
-                <constraint firstAttribute="bottom" secondItem="KUr-8D-SdX" secondAttribute="bottom" id="PaD-3x-l9J"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KUr-8D-SdX" secondAttribute="bottom" id="PaD-3x-l9J"/>
                 <constraint firstItem="KUr-8D-SdX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SGD-Po-QyT"/>
                 <constraint firstAttribute="trailing" secondItem="KUr-8D-SdX" secondAttribute="trailing" id="iEH-9h-hff"/>
             </constraints>

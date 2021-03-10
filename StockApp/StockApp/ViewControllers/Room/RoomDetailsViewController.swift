@@ -102,19 +102,19 @@ class RoomDetailsViewController: UIViewController {
         nameLabel.attributedText = NSAttributedString(string: "Phòng Tư Vấn Chứng Khoán Ngành Ngân Hàng", attributes: TextFormatting.blackHeader)
         editButton.setAttributedTitle(NSAttributedString(string: Constants.RoomDetails.editButton, attributes: TextFormatting.purpleButtonText), for: .normal)
         createdLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.createdTime, attributes: TextFormatting.blackRegularTitle)
-        createdValueLabel.attributedText = NSAttributedString(string: "2 tháng trước", attributes: TextFormatting.greyValue)
+        createdValueLabel.attributedText = NSAttributedString(string: "2 tháng trước", attributes: TextFormatting.grayValue)
         winRateLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.winRate, attributes: TextFormatting.blackRegularTitle)
-        winRateValueLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.greyValue)
+        winRateValueLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.grayValue)
         totalStockLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.totalStock, attributes: TextFormatting.blackRegularTitle)
         totalStockValueLabel.attributedText = NSAttributedString(string: "5", attributes: TextFormatting.purpleValue)
         totalMemberLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.totalMember, attributes: TextFormatting.blackRegularTitle)
-        totalMemberValueLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.greyValue)
+        totalMemberValueLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.grayValue)
         estimationTimeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.estimatedTime, attributes: TextFormatting.blackRegularTitle)
-        estimationTimeValueLabel.attributedText = NSAttributedString(string: "Dưới 1 tháng", attributes: TextFormatting.greyValue)
+        estimationTimeValueLabel.attributedText = NSAttributedString(string: "Dưới 1 tháng", attributes: TextFormatting.grayValue)
         actualTimeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.actualTime, attributes: TextFormatting.blackRegularTitle)
-        actualTimeValueLabel.attributedText = NSAttributedString(string: "Dưới 1 tháng", attributes: TextFormatting.greyValue)
+        actualTimeValueLabel.attributedText = NSAttributedString(string: "Dưới 1 tháng", attributes: TextFormatting.grayValue)
         DescriptionLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.description, attributes: TextFormatting.blackRegularTitle)
-        descriptionValueLabel.attributedText = NSAttributedString(string: "Phòng của Broker Nguyễn Tấn Tài, phí tư vấn 1 tháng là 50k/tháng.", attributes: TextFormatting.greyValue)
+        descriptionValueLabel.attributedText = NSAttributedString(string: "Phòng của Broker Nguyễn Tấn Tài, phí tư vấn 1 tháng là 50k/tháng.", attributes: TextFormatting.grayValue)
         
         descriptionView.backgroundColor = UIColor.init(hexString: "#F3F6FF")
         
@@ -138,7 +138,7 @@ class RoomDetailsViewController: UIViewController {
         roomModeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.roomMode, attributes: TextFormatting.blackRegularTitle)
         roomModeValueLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.publicMode, attributes: TextFormatting.purpleValue)
         roomModeOwnerLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.roomMode, attributes: TextFormatting.blackRegularTitle)
-        modeDescriptionLabel.attributedText = NSAttributedString(string: "Ai cũng có thể thấy phòng trên danh sách các phòng và có thể tham gia phòng không cần xét duyệt.", attributes: TextFormatting.greyValue)
+        modeDescriptionLabel.attributedText = NSAttributedString(string: "Ai cũng có thể thấy phòng trên danh sách các phòng và có thể tham gia phòng không cần xét duyệt.", attributes: TextFormatting.grayValue)
         displaySettingLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.displaySetting, attributes: TextFormatting.blackRegularTitle)
         publicLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.publicMode, attributes: TextFormatting.purpleValue)
         privateLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.privateMode, attributes: TextFormatting.purpleValue)
@@ -153,15 +153,15 @@ class RoomDetailsViewController: UIViewController {
     }
     
     private func setupShadow() {
-        editButton.setBorderRadius(with: 4, color: UIColor.init(hexString: "#3F27B1"), width: 0.5)
+        editButton.setBorderRadius(with: 4, color: UIColor.purpleColor, width: 0.5)
         
         roomDetailsBottomView.backgroundColor =  .white
         roomDetailsBottomView.setBorderRadius(with: 8)
-        roomDetailsBottomView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0.5, height: 0.5), radius: 8, scale: true)
+        roomDetailsBottomView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0.5, height: 0.5), radius: 4)
         
         stackViewBottom.backgroundColor = UIColor.init(hexString: "#F5F2FF")
         stackViewBottom.setBorderRadius(with: 8)
         roomActionUIView.backgroundColor = .clear
-        roomActionUIView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0.5, height: 0.5), radius: 8, scale: true)
+        roomActionUIView.dropShadow(color: UIColor.init(hexString: "#DCC7FF"), opacity: 1, offSet: CGSize(width: 0, height: 0), radius: 4)
     }
 }

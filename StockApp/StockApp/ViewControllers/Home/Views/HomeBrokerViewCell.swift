@@ -14,7 +14,7 @@ class HomeBrokerViewCell: UITableViewCell {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
-            collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             collectionView.showsHorizontalScrollIndicator = false
         }
     }
@@ -23,6 +23,9 @@ class HomeBrokerViewCell: UITableViewCell {
         didSet {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
             flowLayout.scrollDirection = .horizontal
+            
+            flowLayout.minimumLineSpacing = 16
+            flowLayout.minimumInteritemSpacing = 16
         }
     }
     

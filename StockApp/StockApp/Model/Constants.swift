@@ -30,6 +30,7 @@ struct Constants {
         static let publicMode = "Công Khai"
         static let privateMode = "Riêng Tư"
         static let secretMode = "Bí Mật"
+        static let requestButton = "Yêu Cầu"
         
     }
 }
