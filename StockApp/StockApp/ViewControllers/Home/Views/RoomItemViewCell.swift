@@ -33,6 +33,19 @@ class RoomItemViewCell: UITableViewCell {
         separatorLineView.backgroundColor = UIColor.gray
         requestButton.setBorderRadius(with: 4, color: UIColor.purpleColor, width: 0.5)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImage.image = nil
+        ownerImage.image = nil
+        lockImage.image = nil
+        
+        roomLabel.attributedText = nil
+        winRateValue.attributedText = nil
+        totalStockLabel.attributedText = nil
+        createdLabel.attributedText = nil
+        memberValueLabel.attributedText = nil
+    }
 
     func configure() {
         avatarImage.image = UIImage(named: "avatar")
