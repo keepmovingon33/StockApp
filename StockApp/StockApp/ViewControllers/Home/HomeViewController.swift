@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
             tableView.sectionHeaderHeight = UITableView.automaticDimension
             tableView.estimatedSectionHeaderHeight = 50
             tableView.separatorStyle = .none
+            tableView.backgroundColor = .clear
             
         }
     }
@@ -35,6 +36,7 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: headerIdentifier, bundle: nil), forHeaderFooterViewReuseIdentifier: headerIdentifier)
         tableView.register(UINib(nibName: roomIdentifier, bundle: nil), forCellReuseIdentifier: roomIdentifier)
         
+        title = Constants.HomeScreen.title
     }
 }
 
@@ -65,6 +67,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.separatorLineView.isHidden = indexPath.row == 2
             // when select on the item, it doesn't display grey color
             cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             return cell
         }
     }
@@ -76,6 +79,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             header.configure(title: "Phong Dang Tham Gia")
         case 1:
             header.configure(title: "Ket Noi Voi Cac Broker Noi Bat")
+            header.tapHandler = { [weak self] in
+                guard let self = self else { return }
+                let storyboard = UIStoryboard.init(name: "Brokers", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "BrokersViewController")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         case 2:
             header.configure(title: "Phong Rieng")
         default:
