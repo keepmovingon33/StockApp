@@ -9,6 +9,7 @@ import UIKit
 
 class RoomItemViewCell: UITableViewCell {
 
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var ownerImage: UIImageView!
     @IBOutlet weak var lockImage: UIImageView!
@@ -32,6 +33,8 @@ class RoomItemViewCell: UITableViewCell {
         requestButton.setAttributedTitle(NSAttributedString(string: Constants.RoomDetails.requestButton, attributes: TextFormatting.purpleButtonText), for: .normal)
         separatorLineView.backgroundColor = UIColor.gray
         requestButton.setBorderRadius(with: 4, color: UIColor.purpleColor, width: 0.5)
+        self.contentView.backgroundColor = .clear
+        mainView.backgroundColor = .clear
     }
     
     override func prepareForReuse() {

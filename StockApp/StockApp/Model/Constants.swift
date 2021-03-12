@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias SimpleCompletion = (() -> Void)
+
 struct Constants {
     struct RoomDetails {
         static let editButton = "Sửa"
@@ -32,5 +34,16 @@ struct Constants {
         static let secretMode = "Bí Mật"
         static let requestButton = "Yêu Cầu"
         
+    }
+    
+    struct HomeScreen {
+        static let title = "Cộng Đồng"
+    }
+    
+    struct Brokers {
+        static let searchPlaceholder = "Tìm kiếm các broker"
+        static let sorting = "Xếp hạng theo"
+        static let inbox = "Nhắn Tin"
+        static let title = "Các Broker"
     }
 }

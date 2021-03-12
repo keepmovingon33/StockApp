@@ -8,6 +8,14 @@
 import UIKit
 
 extension UIColor {
+    static let lightPurpleColor = UIColor(hexString: "#9676F9")
+    static let purpleColor = UIColor(hexString: "#3F27B1")
+    static let grayColor = UIColor(hexString: "#8E8E93")
+    static let blackColor = UIColor(hexString: "#333333")
+    static let shadowColor = UIColor(hexString: "#DCC7FF")
+}
+
+extension UIColor {
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
@@ -25,10 +33,4 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
-}
-
-extension UIColor {
-    static let purpleColor = UIColor(hexString: "#3F27B1")
-    static let grayColor = UIColor(hexString: "#8E8E93")
-    static let blackColor = UIColor(hexString: "#333333")
 }

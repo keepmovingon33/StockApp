@@ -225,6 +225,7 @@
                 <outlet property="clockImage" destination="0ai-v0-f2Y" id="W6s-fF-SFr"/>
                 <outlet property="createdLabel" destination="kIT-0q-djm" id="e5n-t0-Y7a"/>
                 <outlet property="lockImage" destination="Nun-mW-b46" id="dd2-XH-aMu"/>
+                <outlet property="mainView" destination="Br1-a1-KIo" id="kbW-N7-kcq"/>
                 <outlet property="memberImage" destination="8wW-Rv-gD6" id="Z1u-fw-koZ"/>
                 <outlet property="memberValueLabel" destination="soe-Ll-rsp" id="llK-Cj-rYv"/>
                 <outlet property="ownerImage" destination="anI-F9-aWe" id="rsp-us-ILy"/>
