@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BrokersViewController: BaseViewController {
+class HomeDetailsViewController: BaseViewController {
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchImage: UIImageView!
@@ -23,14 +23,17 @@ class BrokersViewController: BaseViewController {
             tableView.dataSource = self
             tableView.rowHeight = UITableView.automaticDimension
             tableView.estimatedRowHeight = 150
-            tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+            tableView.register(UINib(nibName: brokerIdentifier, bundle: nil), forCellReuseIdentifier: brokerIdentifier)
+            tableView.register(UINib(nibName: roomIdentifier, bundle: nil), forCellReuseIdentifier: roomIdentifier)
             tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
         }
     }
     
-    let identifier = "BrokerViewCell"
+    let brokerIdentifier = "BrokerViewCell"
+    let roomIdentifier = "RoomItemViewCell"
+    var isBroker: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +45,11 @@ class BrokersViewController: BaseViewController {
     func configure() {
         searchView.setBorderRadius(with: 8, color: UIColor.purpleColor, width: 0.5)
         searchImage.image = UIImage(named: "search")
-        searchTextField.attributedPlaceholder = NSAttributedString(string: Constants.Brokers.searchPlaceholder, attributes: TextFormatting.lightPurpleValue)
+        let placeHolder = isBroker ? Constants.HomeDetails.searchPlaceholder : "Tìm kiếm các phòng"
+        searchTextField.attributedPlaceholder = NSAttributedString(string: placeHolder
+                                                                   , attributes: TextFormatting.lightPurpleValue)
         searchTextField.borderStyle = .none
-        sortingLabel.attributedText = NSAttributedString(string: Constants.Brokers.sorting, attributes: TextFormatting.grayValue)
+        sortingLabel.attributedText = NSAttributedString(string: Constants.HomeDetails.sorting, attributes: TextFormatting.grayValue)
         sortingTypeLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.winRate, attributes: TextFormatting.purpleValue)
         sortingTypeImage.image = UIImage(named: "dropdown")
         filterLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.winRate, attributes: TextFormatting.purpleValue)
@@ -55,7 +60,7 @@ class BrokersViewController: BaseViewController {
     func setupNavbar() {
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
-        title = Constants.Brokers.title
+        title = Constants.HomeDetails.brokerTitle
         navigationController?.navigationBar.barTintColor = .white
         navigationItem.leftBarButtonItem?.tintColor = UIColor.purpleColor
         navigationController?.navigationBar.titleTextAttributes = TextFormatting.purpleHeader
@@ -72,15 +77,22 @@ class BrokersViewController: BaseViewController {
     }
 }
 
-extension BrokersViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BrokerViewCell
-        cell.configure()
-        cell.selectionStyle = .none
-        return cell
+        if isBroker {
+            let cell = tableView.dequeueReusableCell(withIdentifier: brokerIdentifier, for: indexPath) as! BrokerViewCell
+            cell.configure()
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! RoomItemViewCell
+            cell.configure()
+            cell.selectionStyle = .none
+            return cell
+        }
     }
 }

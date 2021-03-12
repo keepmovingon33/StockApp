@@ -40,10 +40,10 @@ struct Constants {
         static let title = "Cộng Đồng"
     }
     
-    struct Brokers {
+    struct HomeDetails {
         static let searchPlaceholder = "Tìm kiếm các broker"
         static let sorting = "Xếp hạng theo"
         static let inbox = "Nhắn Tin"
-        static let title = "Các Broker"
+        static let brokerTitle = "Các Broker"
     }
 }

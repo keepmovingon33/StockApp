@@ -28,6 +28,7 @@ class HomeViewController: BaseViewController {
     let headerIdentifier = "HomeHeaderViewCell"
     let brokerIdentifier = "HomeBrokerViewCell"
     let roomIdentifier = "RoomItemViewCell"
+    let homeDetailsIdentifier = "HomeDetailsViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()      
@@ -81,14 +82,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             header.configure(title: "Ket Noi Voi Cac Broker Noi Bat")
             header.tapHandler = { [weak self] in
                 guard let self = self else { return }
-                let storyboard = UIStoryboard.init(name: "Brokers", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "BrokersViewController")
+                let vc = UIStoryboard.homeDetails.instantiateViewController(withIdentifier: self.homeDetailsIdentifier)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         case 2:
             header.configure(title: "Phong Rieng")
+            header.tapHandler = { [weak self] in
+                guard let self = self else { return }
+                let vc = UIStoryboard.homeDetails.instantiateViewController(withIdentifier: self.homeDetailsIdentifier) as! HomeDetailsViewController
+                vc.isBroker = false
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         default:
             header.configure(title: "Phong Cong Khai")
+            header.tapHandler = { [weak self] in
+                guard let self = self else { return }
+                let vc = UIStoryboard.homeDetails.instantiateViewController(withIdentifier: self.homeDetailsIdentifier) as! HomeDetailsViewController
+                vc.isBroker = false
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
         return header
     }

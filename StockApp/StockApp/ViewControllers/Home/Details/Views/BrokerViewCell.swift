@@ -55,7 +55,7 @@ class BrokerViewCell: UITableViewCell {
         winRateLabel.attributedText = NSAttributedString(string: "Ty Le Thang", attributes: TextFormatting.smallGrayRegular)
         totalStockValueLabel.attributedText = NSAttributedString(string: "6", attributes: TextFormatting.bigGraySemibold)
         totalStockLabel.attributedText = NSAttributedString(string: "Tong So Ma", attributes: TextFormatting.smallGrayRegular)
-        inboxButton.setAttributedTitle(NSAttributedString(string: Constants.Brokers.inbox, attributes: TextFormatting.purpleButtonText), for: .normal)
+        inboxButton.setAttributedTitle(NSAttributedString(string: Constants.HomeDetails.inbox, attributes: TextFormatting.purpleButtonText), for: .normal)
     }
     
     func setupShadow() {
