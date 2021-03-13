@@ -14,10 +14,10 @@ struct HomeResponse: Decodable {
 }
 
 struct HomeData: Decodable {
-    let type: String
+    let type: HomeType
     let title: String
     let url: String?
-    let itemType: String
+    let itemType: ItemType
     let isMyRoom: Bool?
     let rooms: [Room]?
     let brokers: [User]?
@@ -31,30 +31,40 @@ struct HomeData: Decodable {
         case itemType = "item_type"
         case isMyRoom = "is_my_room"
     }
+    
+    enum HomeType: String, Decodable {
+        case horizontal
+        case vertical
+    }
+    
+    enum ItemType: String, Decodable {
+        case room
+        case broker
+    }
 }
 
 struct Room: Decodable {
     let id: String
     let ownerId: String
     let name: String
-    let desc: String
-    let avatar: String
+    let desc: String?
+    let avatar: String?
     let type: String
     let status: String
-    let winRate: Double
-    let profit: Double
+    let winRate: Double?
+    let profit: Double?
     let totalStockFinish: Int
     let totalStockWin: Int
-    let createdAt: Date
+    let createdAt: Date?
     let updateAt: Date
-    let actualHoldingTime: Double
-    let holdingTime: Double
-    let visibleSettings: VisibleSettings
-    let totalSignal: Int
+    let actualHoldingTime: Double?
+    let holdingTime: Double?
+    let visibleSettings: VisibleSettings?
+    let totalSignal: Int?
     let isActiveLately: Bool
     let shareLink: String
-    let userRoom: User
-    let owner: User
+    let userRoom: UserRoom?
+    let owner: User?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -88,7 +98,7 @@ struct Room: Decodable {
         let member: Int
         let actualHoldingTime: Int
         let holdingTime: Int
-        let totalSignal: Int
+        let totalSignal: Int?
         
         enum CodingKeys: String, CodingKey {
             case createdAt = "created_at"
@@ -103,10 +113,24 @@ struct Room: Decodable {
     }
 }
 
+struct UserRoom: Decodable {
+    let id: Int
+    let user_id: String
+    let room_id: String
+    let status: String
+    let expired_at: Date?
+    let created_at: Date
+    let updated_at: Date
+    let join_at: Date
+    let enable_notification_stock: Bool
+    let enable_notification_message: Bool
+    let role_id: Int
+}
+
 struct User: Decodable {
     let id: String
     let name: String
-    let email: String
+    let email: String?
     let roleId: Int
     let provider: String
     let providerId: String
@@ -121,10 +145,10 @@ struct User: Decodable {
     let holdingTime: Double
     let roomCount: Int
     let totalSignal: Int
-    let visibleSetting: VisibleSettings
-    let phone: String
-    let gender: String
-    let birthday: Date
+    let visibleSetting: VisibleSettings?
+    let phone: String?
+    let gender: String?
+    let birthday: Date?
     let desc: String?
     let isActiveLately: Bool
     
