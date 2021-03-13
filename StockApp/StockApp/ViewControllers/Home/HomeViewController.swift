@@ -5,6 +5,7 @@
 //  Created by Sky on 3/7/21.
 //
 
+import Alamofire
 import UIKit
 
 class HomeViewController: BaseViewController {
@@ -38,6 +39,40 @@ class HomeViewController: BaseViewController {
         tableView.register(UINib(nibName: roomIdentifier, bundle: nil), forCellReuseIdentifier: roomIdentifier)
         
         title = Constants.HomeScreen.title
+        fetchHomeData()
+    }
+    
+    private func fetchHomeData() {
+        let endpoint: String = "https://admin.bstock.vn/api/v3/home"
+        let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
+                                  "Accept": "application/json",
+                                  "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjE1NTY0OTUzLCJleHAiOjE2MjA3NDg5NTMsIm5iZiI6MTYxNTU2NDk1MywianRpIjoiR3dMYUhUOVpmZ0g3ZEVtZSJ9.gO3sYmCiTs8YnNhRV3Y0-X_bDx0RQs5VtTsVIEKzSQ4"])
+        AF.request(endpoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { data in
+            print(data)
+            switch data.result {
+            case let .success(value):
+                do {
+                    let decoder = JSONDecoder()
+                    let messages = try decoder.decode(HomeResponse.self, from: value as! Data)
+                    print(messages as Any)
+                } catch DecodingError.dataCorrupted(let context) {
+                    print(context)
+                } catch DecodingError.keyNotFound(let key, let context) {
+                    print("Key '\(key)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch DecodingError.valueNotFound(let value, let context) {
+                    print("Value '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch DecodingError.typeMismatch(let type, let context) {
+                    print("Type '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch {
+                    print("error: ", error)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }
 
