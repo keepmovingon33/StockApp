@@ -174,9 +174,9 @@ struct User: Decodable {
     let enableNotification: Bool
     let createdAt: Date
     let updatedAt: Date
-    let winRate: Double
-    let profit: Double
-    let totalStockFinish: Int
+    let winRate: Double?
+    let profit: Double?
+    let totalStockFinish: Int?
     let totalStockWin: Int
     let holdingTime: Double
     let roomCount: Int

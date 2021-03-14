@@ -117,6 +117,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case .broker:
             let cell = tableView.dequeueReusableCell(withIdentifier: brokerIdentifier, for: indexPath) as! HomeBrokerViewCell
+            cell.configure(brokers: data.brokers)
             return cell
         }
     }

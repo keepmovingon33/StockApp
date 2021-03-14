@@ -33,37 +33,48 @@ class BrokerItemViewCell: UICollectionViewCell {
         super.awakeFromNib()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 16) / 1.3).isActive = true
-
+        interestRateLabel.attributedText = NSAttributedString(string: "Lai Thang", attributes: TextFormatting.smallGrayRegular)
+        winRateLabel.attributedText = NSAttributedString(string: "Ty Le Thang", attributes: TextFormatting.smallGrayRegular)
+        totalStockLabel.attributedText = NSAttributedString(string: "Tong So Ma", attributes: TextFormatting.smallGrayRegular)
+        inboxButton.setImage(UIImage(named: "inbox"), for: .normal)
+        interestRateLineView.backgroundColor = UIColor.purpleColor
         setupShadow()
+        resetUI()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        resetUI()
+    }
+    
+    private func resetUI() {
         avatarImage.image = nil
         nameLabel.attributedText = nil
         joiningTimeLabel.attributedText = nil
         interestRateValueLabel.attributedText = nil
-        interestRateLabel.attributedText = nil
         winRateValueLabel.attributedText = nil
-        winRateLabel.attributedText = nil
         totalStockValueLabel.attributedText = nil
-        totalStockLabel.attributedText = nil
-        inboxButton.setImage(nil, for: .normal)
     }
     
-    func configure() {
-        avatarImage.image = UIImage(named: "memberAvatar")
-        nameLabel.attributedText = NSAttributedString(string: "Giang Nguyen", attributes: TextFormatting.blackRegularTitle)
-        joiningTimeLabel.attributedText = NSAttributedString(string: "Tham gia tu 01/02/18", attributes: TextFormatting.smallGrayRegular)
-        interestRateValueLabel.attributedText = NSAttributedString(string: "20%", attributes: TextFormatting.bigGraySemibold)
-        interestRateLabel.attributedText = NSAttributedString(string: "Lai Thang", attributes: TextFormatting.smallGrayRegular)
-        winRateValueLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.bigGraySemibold)
-        winRateLabel.attributedText = NSAttributedString(string: "Ty Le Thang", attributes: TextFormatting.smallGrayRegular)
-        totalStockValueLabel.attributedText = NSAttributedString(string: "6", attributes: TextFormatting.bigGraySemibold)
-        totalStockLabel.attributedText = NSAttributedString(string: "Tong So Ma", attributes: TextFormatting.smallGrayRegular)
-        inboxButton.setImage(UIImage(named: "inbox"), for: .normal)
-        interestRateLineView.backgroundColor = .red
+    func configure(user: User) {
+        avatarImage.setImageWith(urlString: user.avatar, placeholder: UIImage(named: "memberAvatar"))
+        nameLabel.attributedText = NSAttributedString(string: user.name, attributes: TextFormatting.blackRegularTitle)
+        let joiningTime = user.createdAt.toString(with: "dd/MM/yy")
+        joiningTimeLabel.attributedText = NSAttributedString(string: "Tham gia từ \(joiningTime)", attributes: TextFormatting.smallGrayRegular)
+        if let profit = user.profit {
+            interestRateValueLabel.attributedText = NSAttributedString(string: "\(profit)%", attributes: TextFormatting.bigGraySemibold)
+            //TODO: handle hidden
+        }
         
+        if let winRate = user.winRate {
+            winRateValueLabel.attributedText = NSAttributedString(string: "\(winRate)%", attributes: TextFormatting.bigGraySemibold)
+            //TODO: handle hidden
+        }
+        
+        if let totalStock = user.totalStockFinish {
+            totalStockValueLabel.attributedText = NSAttributedString(string: String(totalStock), attributes: TextFormatting.bigGraySemibold)
+            //TODO: handle hidden
+        }
     }
     
     private func setupShadow() {

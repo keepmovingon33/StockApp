@@ -49,3 +49,12 @@ extension Date {
         return ""
     }
 }
+
+extension Date {
+    func toString(with format: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = format
+        let value = df.string(from: self)
+        return value
+    }
+}
