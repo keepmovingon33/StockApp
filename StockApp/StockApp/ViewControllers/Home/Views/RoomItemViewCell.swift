@@ -24,6 +24,16 @@ class RoomItemViewCell: UITableViewCell {
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var separatorLineView: UIView!
     
+    
+    @IBOutlet weak var winRateAndStockStackView: UIStackView!
+    @IBOutlet weak var winRateView: UIView!
+    @IBOutlet weak var winRateDotView: UIView!
+    @IBOutlet weak var totalStockView: UIView!
+    @IBOutlet weak var createdAndMemberStackView: UIStackView!
+    @IBOutlet weak var createdView: UIView!
+    @IBOutlet weak var createdDotView: UIView!
+    @IBOutlet weak var memberView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -58,6 +68,14 @@ class RoomItemViewCell: UITableViewCell {
         memberValueLabel.attributedText = nil
         lockImage.image = UIImage(named: "lock")
         requestButton.isHidden = false
+        winRateView.isHidden = true
+        totalStockView.isHidden = true
+        winRateAndStockStackView.isHidden = false
+        winRateDotView.isHidden = true
+        createdView.isHidden = true
+        createdDotView.isHidden = true
+        createdAndMemberStackView.isHidden = false
+        memberView.isHidden = true
     }
 
     func configure(room: Room) {
@@ -75,16 +93,32 @@ class RoomItemViewCell: UITableViewCell {
         roomLabel.attributedText = NSAttributedString(string: room.name, attributes: TextFormatting.blackMediumTitle)
         if let winrate = room.winRate {
             winRateValue.attributedText = NSAttributedString(string: "\(winrate)%", attributes: TextFormatting.smallGrayRegular)
+            winRateView.isHidden = false
         }
         if let totalStock = room.totalStockFinish {
             totalStockLabel.attributedText = NSAttributedString(string: "\(totalStock) ma", attributes: TextFormatting.smallGrayRegular)
+            totalStockView.isHidden = false
         }
+        if room.winRate != nil && room.totalStockFinish != nil {
+            winRateDotView.isHidden = false
+        } else if room.winRate == nil && room.totalStockFinish == nil {
+            winRateAndStockStackView.isHidden = true
+        }
+    
         if let created = room.createdAt {
             let months = Date().months(from: created)
             createdLabel.attributedText = NSAttributedString(string: "\(months) thang", attributes: TextFormatting.smallGrayRegular)
+            createdView.isHidden = false
+            
         }
         if let member = room.member {
             memberValueLabel.attributedText = NSAttributedString(string: "\(member)", attributes: TextFormatting.smallGrayRegular)
+            memberView.isHidden = false
+        }
+        if room.createdAt != nil && room.member != nil {
+            createdDotView.isHidden = false
+        } else if room.createdAt == nil && room.member == nil {
+            createdAndMemberStackView.isHidden = true
         }
         
         if room.isInRoom() {
