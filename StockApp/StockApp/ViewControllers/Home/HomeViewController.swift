@@ -25,19 +25,19 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    let joiningRoomIdentifier = "JoiningRoomViewCell"
+    let horizontalRoomIdentifier = "HorizontalRoomViewCell"
     let headerIdentifier = "HomeHeaderViewCell"
     let brokerIdentifier = "HomeBrokerViewCell"
-    let roomIdentifier = "RoomItemViewCell"
+    let verticalRoomIdentifier = "VerticalRoomItemViewCell"
     let homeDetailsIdentifier = "HomeDetailsViewController"
     var homeData: [HomeData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()      
-        tableView.register(UINib(nibName: joiningRoomIdentifier, bundle: nil), forCellReuseIdentifier: joiningRoomIdentifier)
+        tableView.register(UINib(nibName: horizontalRoomIdentifier, bundle: nil), forCellReuseIdentifier: horizontalRoomIdentifier)
         tableView.register(UINib(nibName: brokerIdentifier, bundle: nil), forCellReuseIdentifier: brokerIdentifier)
         tableView.register(UINib(nibName: headerIdentifier, bundle: nil), forHeaderFooterViewReuseIdentifier: headerIdentifier)
-        tableView.register(UINib(nibName: roomIdentifier, bundle: nil), forCellReuseIdentifier: roomIdentifier)
+        tableView.register(UINib(nibName: verticalRoomIdentifier, bundle: nil), forCellReuseIdentifier: verticalRoomIdentifier)
         
         title = Constants.HomeScreen.title
         fetchHomeData()
@@ -103,11 +103,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch data.itemType {
         case .room:
             if data.type == .horizontal {
-                let cell = tableView.dequeueReusableCell(withIdentifier: joiningRoomIdentifier, for: indexPath) as! JoiningRoomViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: horizontalRoomIdentifier, for: indexPath) as! HorizontalRoomViewCell
                 cell.configure(rooms: data.rooms)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! RoomItemViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: verticalRoomIdentifier, for: indexPath) as! VerticalRoomItemViewCell
                 cell.configure(room: data.rooms[indexPath.row])
                 cell.separatorLineView.isHidden = indexPath.row == data.rooms.count - 1
                 // when select on the item, it doesn't display grey color

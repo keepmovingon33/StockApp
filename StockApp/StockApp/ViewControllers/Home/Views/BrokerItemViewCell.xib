@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -97,10 +98,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njh-Ac-NjC">
-                                                <rect key="frame" x="151" y="4" width="0.5" height="65"/>
+                                                <rect key="frame" x="150.5" y="4" width="1" height="55"/>
                                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="0.5" id="3hd-lR-5Cx"/>
+                                                    <constraint firstAttribute="width" constant="1" id="3hd-lR-5Cx"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -113,7 +114,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Njh-Ac-NjC" secondAttribute="trailing" id="dJK-XC-bLw"/>
                                             <constraint firstItem="Njh-Ac-NjC" firstAttribute="top" secondItem="c1M-Nj-fc2" secondAttribute="top" constant="4" id="dXs-F6-pNa"/>
                                             <constraint firstItem="LPa-CM-P7p" firstAttribute="centerX" secondItem="c1M-Nj-fc2" secondAttribute="centerX" id="qVK-0K-2v8"/>
-                                            <constraint firstAttribute="bottom" secondItem="Njh-Ac-NjC" secondAttribute="bottom" constant="8" id="wWt-Go-fRZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Njh-Ac-NjC" secondAttribute="bottom" constant="18" id="wWt-Go-fRZ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipf-n0-dhX">
@@ -132,10 +133,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="law-mu-YoP">
-                                                <rect key="frame" x="150.5" y="4" width="0.5" height="65"/>
+                                                <rect key="frame" x="150" y="4" width="1" height="55"/>
                                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="0.5" id="V8t-dc-2hh"/>
+                                                    <constraint firstAttribute="width" constant="1" id="V8t-dc-2hh"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -148,20 +149,20 @@
                                             <constraint firstItem="LRQ-i1-EYC" firstAttribute="centerX" secondItem="ipf-n0-dhX" secondAttribute="centerX" id="ORX-km-TmU"/>
                                             <constraint firstItem="law-mu-YoP" firstAttribute="top" secondItem="ipf-n0-dhX" secondAttribute="top" constant="4" id="QhT-NB-uwf"/>
                                             <constraint firstItem="phi-4C-kwd" firstAttribute="centerX" secondItem="ipf-n0-dhX" secondAttribute="centerX" id="mYW-qh-sFn"/>
-                                            <constraint firstAttribute="bottom" secondItem="law-mu-YoP" secondAttribute="bottom" constant="8" id="qp3-pQ-GiJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="law-mu-YoP" secondAttribute="bottom" constant="18" id="qp3-pQ-GiJ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoR-55-8S7">
                                         <rect key="frame" x="302.5" y="0.0" width="151.5" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT1-fR-Tmb">
-                                                <rect key="frame" x="55" y="0.0" width="41.5" height="40.5"/>
+                                                <rect key="frame" x="55" y="0.0" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLL-44-h0B">
-                                                <rect key="frame" x="55" y="44.5" width="41.5" height="20.5"/>
+                                                <rect key="frame" x="55" y="24.5" width="41.5" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -221,6 +222,7 @@
                 <outlet property="totalStockValueLabel" destination="xT1-fR-Tmb" id="EnJ-9A-pXl"/>
                 <outlet property="totalStockView" destination="AoR-55-8S7" id="POc-JV-fSC"/>
                 <outlet property="winRateLabel" destination="LRQ-i1-EYC" id="kBW-Bw-vb1"/>
+                <outlet property="winRateLineView" destination="law-mu-YoP" id="iIH-tf-91P"/>
                 <outlet property="winRateValueLabel" destination="phi-4C-kwd" id="XnA-BD-fuz"/>
                 <outlet property="winRateView" destination="ipf-n0-dhX" id="PKo-hn-kS6"/>
             </connections>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoomItemViewCell: UITableViewCell {
+class VerticalRoomItemViewCell: UITableViewCell {
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var avatarImage: UIImageView!

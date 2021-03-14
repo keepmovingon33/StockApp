@@ -18,9 +18,9 @@ class BrokerItemViewCell: UICollectionViewCell {
     @IBOutlet weak var interestRateLineView: UIView!
     @IBOutlet weak var winRateValueLabel: UILabel!
     @IBOutlet weak var winRateLabel: UILabel!
+    @IBOutlet weak var winRateLineView: UIView!
     @IBOutlet weak var totalStockValueLabel: UILabel!
     @IBOutlet weak var totalStockLabel: UILabel!
-    
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var topView: UIView!
@@ -38,6 +38,8 @@ class BrokerItemViewCell: UICollectionViewCell {
         totalStockLabel.attributedText = NSAttributedString(string: "Tong So Ma", attributes: TextFormatting.smallGrayRegular)
         inboxButton.setImage(UIImage(named: "inbox"), for: .normal)
         interestRateLineView.backgroundColor = UIColor.purpleColor
+        winRateLineView.backgroundColor = UIColor.purpleColor
+        avatarImage.setBorderRadius(with: 25)
         setupShadow()
         resetUI()
     }
@@ -54,6 +56,9 @@ class BrokerItemViewCell: UICollectionViewCell {
         interestRateValueLabel.attributedText = nil
         winRateValueLabel.attributedText = nil
         totalStockValueLabel.attributedText = nil
+        interestView.isHidden = true
+        winRateView.isHidden = true
+        totalStockView.isHidden = true
     }
     
     func configure(user: User) {
@@ -63,17 +68,17 @@ class BrokerItemViewCell: UICollectionViewCell {
         joiningTimeLabel.attributedText = NSAttributedString(string: "Tham gia từ \(joiningTime)", attributes: TextFormatting.smallGrayRegular)
         if let profit = user.profit {
             interestRateValueLabel.attributedText = NSAttributedString(string: "\(profit)%", attributes: TextFormatting.bigGraySemibold)
-            //TODO: handle hidden
+            interestView.isHidden = false
         }
         
         if let winRate = user.winRate {
             winRateValueLabel.attributedText = NSAttributedString(string: "\(winRate)%", attributes: TextFormatting.bigGraySemibold)
-            //TODO: handle hidden
+            winRateView.isHidden = false
         }
         
         if let totalStock = user.totalStockFinish {
             totalStockValueLabel.attributedText = NSAttributedString(string: String(totalStock), attributes: TextFormatting.bigGraySemibold)
-            //TODO: handle hidden
+            totalStockView.isHidden = false
         }
     }
     
