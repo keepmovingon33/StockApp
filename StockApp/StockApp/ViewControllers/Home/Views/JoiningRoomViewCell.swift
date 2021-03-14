@@ -33,22 +33,29 @@ class JoiningRoomViewCell: UITableViewCell {
     
     let identifier = "JoiningRoomItemViewCell"
     
+    var rooms: [Room] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
     }
     
+    func configure(rooms: [Room]) {
+        self.rooms = rooms
+        collectionView.reloadData()
+    }
+    
 }
 
 extension JoiningRoomViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return rooms.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! JoiningRoomItemViewCell
-        cell.configure(name: "Phong Vip Tu Van Khoan")
+        cell.configure(room: rooms[indexPath.row])
         return cell
     }
 }

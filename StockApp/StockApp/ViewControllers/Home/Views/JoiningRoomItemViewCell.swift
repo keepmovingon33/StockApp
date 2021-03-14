@@ -5,6 +5,7 @@
 //  Created by Sky on 3/7/21.
 //
 
+import Kingfisher
 import UIKit
 
 class JoiningRoomItemViewCell: UICollectionViewCell {
@@ -35,10 +36,15 @@ class JoiningRoomItemViewCell: UICollectionViewCell {
         winRateImage.image = UIImage(named: "winRate")
         memberImage.image = UIImage(named: "member")
         clockImage.image = UIImage(named: "clock")
+        resetUI()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        resetUI()
+    }
+    
+    private func resetUI() {
         ownerImage.image = nil
         avatarImage.image = nil
         nameLabel.attributedText = nil
@@ -48,13 +54,35 @@ class JoiningRoomItemViewCell: UICollectionViewCell {
         memberLabel.attributedText = nil
     }
     
-    func configure(name: String) {
-        ownerImage.image = UIImage(named: "owner_user")
-        avatarImage.image = UIImage(named: "avatar")
-        nameLabel.attributedText = NSAttributedString(string: name, attributes: TextFormatting.blackMediumTitle)
-        winRateLabel.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.smallGrayRegular)
-        totalStockLabel.attributedText = NSAttributedString(string: "6 ma", attributes: TextFormatting.smallGrayRegular)
-        createdTimeLabel.attributedText = NSAttributedString(string: "24 thang", attributes: TextFormatting.smallGrayRegular)
-        memberLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.smallGrayRegular)
+    func configure(room: Room) {
+        if room.isRoomOwner() {
+            ownerImage.image = UIImage(named: "owner")
+        } else if room.isRoomAdmin() {
+            ownerImage.image = UIImage(named: "admin")
+        }
+        
+        avatarImage.setImageWith(urlString: room.avatar, placeholder: UIImage(named: "avatar"))
+        
+        nameLabel.attributedText = NSAttributedString(string: room.name, attributes: TextFormatting.blackMediumTitle)
+        if let winrate = room.winRate {
+            winRateLabel.attributedText = NSAttributedString(string: "\(winrate)%", attributes: TextFormatting.smallGrayRegular)
+            //TODO: Show winrate view and handle prepareForReuse
+        }
+        if let totalStock = room.totalStockFinish {
+            totalStockLabel.attributedText = NSAttributedString(string: "\(totalStock) mã", attributes: TextFormatting.smallGrayRegular)
+            //TODO: Show totalStock view and handle prepareForReuse
+        }
+        
+        if let createdTime = room.createdAt {
+            let month = Date().months(from: createdTime)
+            createdTimeLabel.attributedText = NSAttributedString(string: "\(month) thang", attributes: TextFormatting.smallGrayRegular)
+            //TODO: Show month view and handle prepareForReuse
+        }
+        
+        if let member = room.member {
+            memberLabel.attributedText = NSAttributedString(string: "\(member)", attributes: TextFormatting.smallGrayRegular)
+            //TODO: Show member view and handle prepareForReuse
+        }
+        
     }
 }

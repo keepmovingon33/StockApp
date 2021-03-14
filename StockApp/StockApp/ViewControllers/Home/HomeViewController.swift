@@ -57,10 +57,9 @@ class HomeViewController: BaseViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                if let homeResponse = try decoder.decode(HomeResponse.self, from: data) as? HomeResponse {
-                    self.homeData = homeResponse.data
-                    self.tableView.reloadData()
-                }
+                let homeResponse = try decoder.decode(HomeResponse.self, from: data)
+                self.homeData = homeResponse.data.filter({ $0.rooms.count != 0 || $0.brokers.count != 0 })
+                self.tableView.reloadData()
                 
             } catch DecodingError.dataCorrupted(let context) {
                 print(context)
@@ -82,7 +81,7 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return homeData.filter({ $0.rooms?.count != 0 || $0.brokers?.count != 0 }).count
+        return homeData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,7 +91,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             if data.type == .horizontal {
                 return 1
             } else {
-                return data.rooms?.count ?? 0
+                return data.rooms.count
             }
         case .broker:
             return 1
@@ -105,6 +104,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .room:
             if data.type == .horizontal {
                 let cell = tableView.dequeueReusableCell(withIdentifier: joiningRoomIdentifier, for: indexPath) as! JoiningRoomViewCell
+                cell.configure(rooms: data.rooms)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! RoomItemViewCell

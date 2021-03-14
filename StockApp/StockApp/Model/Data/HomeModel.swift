@@ -19,8 +19,8 @@ struct HomeData: Decodable {
     let url: String?
     let itemType: ItemType
     let isMyRoom: Bool?
-    let rooms: [Room]?
-    let brokers: [User]?
+    var rooms: [Room] = []
+    var brokers: [User] = []
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -30,6 +30,18 @@ struct HomeData: Decodable {
         case rooms
         case itemType = "item_type"
         case isMyRoom = "is_my_room"
+    }
+    
+    // ham init nay minh su dung khi minh muon set gia tri empty array cho rooms va brokers
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        type = try values.decode(HomeType.self, forKey: .type)
+        title = try values.decode(String.self, forKey: .title)
+        url = try? values.decode(String.self, forKey: .url)
+        itemType = try values.decode(ItemType.self, forKey: .itemType)
+        isMyRoom = try? values.decode(Bool.self, forKey: .isMyRoom)
+        rooms = (try? values.decode([Room].self, forKey: .rooms)) ?? []
+        brokers = (try? values.decode([User].self, forKey: .brokers)) ?? []
     }
     
     enum HomeType: String, Decodable {
@@ -53,18 +65,19 @@ struct Room: Decodable {
     let status: String
     let winRate: Double?
     let profit: Double?
-    let totalStockFinish: Int
+    let totalStockFinish: Int?
     let totalStockWin: Int
     let createdAt: Date?
     let updateAt: Date
     let actualHoldingTime: Double?
     let holdingTime: Double?
-    let visibleSettings: VisibleSettings?
+    let visibleSettings: VisibleSettings
     let totalSignal: Int?
     let isActiveLately: Bool
     let shareLink: String
     let userRoom: UserRoom?
     let owner: User?
+    let member: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -88,6 +101,7 @@ struct Room: Decodable {
         case isActiveLately = "is_active_lately"
         case shareLink = "share_link"
         case userRoom = "user_room"
+        case member
     }
     
     struct VisibleSettings: Decodable {
@@ -111,6 +125,22 @@ struct Room: Decodable {
             case totalSignal = "total_signal"
         }
     }
+    
+    func isInRoom() -> Bool {
+        return userRoom != nil
+    }
+    
+    func isRoomOwner() -> Bool {
+        return isInRoom() && userRoom?.role_id == .owner
+    }
+    
+    func isRoomAdmin() -> Bool {
+        return isInRoom() && userRoom?.role_id == .admin
+    }
+    
+    func isRoomMember() -> Bool {
+        return isInRoom() && userRoom?.role_id == .member
+    }
 }
 
 struct UserRoom: Decodable {
@@ -124,7 +154,13 @@ struct UserRoom: Decodable {
     let join_at: Date
     let enable_notification_stock: Bool
     let enable_notification_message: Bool
-    let role_id: Int
+    let role_id: RoleType
+    
+    enum RoleType: Int, Decodable {
+        case owner = 1
+        case admin = 2
+        case member = 3
+    }
 }
 
 struct User: Decodable {
@@ -145,7 +181,7 @@ struct User: Decodable {
     let holdingTime: Double
     let roomCount: Int
     let totalSignal: Int
-    let visibleSetting: VisibleSettings?
+    let visibleSetting: VisibleSettings
     let phone: String?
     let gender: String?
     let birthday: Date?
