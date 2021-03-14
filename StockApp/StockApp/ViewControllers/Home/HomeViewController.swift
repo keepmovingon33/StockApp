@@ -108,8 +108,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! RoomItemViewCell
-                cell.configure()
-                cell.separatorLineView.isHidden = indexPath.row == 2
+                cell.configure(room: data.rooms[indexPath.row])
+                cell.separatorLineView.isHidden = indexPath.row == data.rooms.count - 1
                 // when select on the item, it doesn't display grey color
                 cell.selectionStyle = .none
                 cell.backgroundColor = .clear

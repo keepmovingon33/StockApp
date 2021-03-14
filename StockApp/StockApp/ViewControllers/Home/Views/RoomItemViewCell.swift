@@ -35,31 +35,61 @@ class RoomItemViewCell: UITableViewCell {
         requestButton.setBorderRadius(with: 4, color: UIColor.purpleColor, width: 0.5)
         self.contentView.backgroundColor = .clear
         mainView.backgroundColor = .clear
+        avatarImage.contentMode = .scaleAspectFill
+        avatarImage.setBorderRadius(with: 4)
+        
+        resetUI()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        resetUI()
+    }
+    
+    private func resetUI() {
         avatarImage.image = nil
         ownerImage.image = nil
-        lockImage.image = nil
         
         roomLabel.attributedText = nil
         winRateValue.attributedText = nil
         totalStockLabel.attributedText = nil
         createdLabel.attributedText = nil
         memberValueLabel.attributedText = nil
+        lockImage.image = UIImage(named: "lock")
+        requestButton.isHidden = false
     }
 
-    func configure() {
-        avatarImage.image = UIImage(named: "avatar")
-        ownerImage.image = UIImage(named: "owner_user")
-        lockImage.image = UIImage(named: "lock")
+    func configure(room: Room) {
+        avatarImage.setImageWith(urlString: room.avatar, placeholder: UIImage(named: "avatar"))
+        if room.isRoomOwner() {
+            ownerImage.image = UIImage(named: "owner")
+        } else if room.isRoomAdmin() {
+            ownerImage.image = UIImage(named: "admin")
+        }
         
-        roomLabel.attributedText = NSAttributedString(string: "Phong Vip Chung Khoan - Luot Song abcdxyz", attributes: TextFormatting.blackMediumTitle)
-        winRateValue.attributedText = NSAttributedString(string: "87%", attributes: TextFormatting.smallGrayRegular)
-        totalStockLabel.attributedText = NSAttributedString(string: "6 ma", attributes: TextFormatting.smallGrayRegular)
-        createdLabel.attributedText = NSAttributedString(string: "1 thang", attributes: TextFormatting.smallGrayRegular)
-        memberValueLabel.attributedText = NSAttributedString(string: "23", attributes: TextFormatting.smallGrayRegular)
+        if room.type == .publication {
+            lockImage.image = nil
+        }
+        
+        roomLabel.attributedText = NSAttributedString(string: room.name, attributes: TextFormatting.blackMediumTitle)
+        if let winrate = room.winRate {
+            winRateValue.attributedText = NSAttributedString(string: "\(winrate)%", attributes: TextFormatting.smallGrayRegular)
+        }
+        if let totalStock = room.totalStockFinish {
+            totalStockLabel.attributedText = NSAttributedString(string: "\(totalStock) ma", attributes: TextFormatting.smallGrayRegular)
+        }
+        if let created = room.createdAt {
+            let months = Date().months(from: created)
+            createdLabel.attributedText = NSAttributedString(string: "\(months) thang", attributes: TextFormatting.smallGrayRegular)
+        }
+        if let member = room.member {
+            memberValueLabel.attributedText = NSAttributedString(string: "\(member)", attributes: TextFormatting.smallGrayRegular)
+        }
+        
+        if room.isInRoom() {
+            requestButton.isHidden = true
+        }
     }
     
 }

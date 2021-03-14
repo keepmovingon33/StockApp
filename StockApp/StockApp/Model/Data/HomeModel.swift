@@ -61,7 +61,7 @@ struct Room: Decodable {
     let name: String
     let desc: String?
     let avatar: String?
-    let type: String
+    let type: RoomType
     let status: String
     let winRate: Double?
     let profit: Double?
@@ -102,6 +102,12 @@ struct Room: Decodable {
         case shareLink = "share_link"
         case userRoom = "user_room"
         case member
+    }
+    
+    enum RoomType: String, Decodable {
+        case publication = "public"
+        case privacy = "private"
+        case closed = "closed"
     }
     
     struct VisibleSettings: Decodable {
