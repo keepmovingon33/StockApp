@@ -30,23 +30,30 @@ class HomeBrokerViewCell: UITableViewCell {
     }
     
     let brokerIdentifier = "BrokerItemViewCell"
+    // minh gop brokers va user la nhu nhau
+    var brokers: [User] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.register(UINib(nibName: brokerIdentifier, bundle: nil), forCellWithReuseIdentifier: brokerIdentifier)
     }
+    
+    func configure(brokers: [User]) {
+        self.brokers = brokers
+        collectionView.reloadData()
+    }
 
 }
 
 extension HomeBrokerViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return brokers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: brokerIdentifier, for: indexPath) as! BrokerItemViewCell
-        cell.configure()
+        cell.configure(user: brokers[indexPath.row])
         return cell
     }
 }

@@ -89,8 +89,8 @@ extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             cell.selectionStyle = .none
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! RoomItemViewCell
-            cell.configure()
+            let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! VerticalRoomItemViewCell
+//            cell.configure(room: <#T##Room#>)
             cell.selectionStyle = .none
             return cell
         }
