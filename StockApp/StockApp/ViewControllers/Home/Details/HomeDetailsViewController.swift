@@ -32,7 +32,7 @@ class HomeDetailsViewController: BaseViewController {
     }
     
     let brokerIdentifier = "BrokerViewCell"
-    let roomIdentifier = "RoomItemViewCell"
+    let roomIdentifier = "VerticalRoomItemViewCell"
     var isBroker: Bool = true
     
     override func viewDidLoad() {
