@@ -46,4 +46,10 @@ struct Constants {
         static let inbox = "Nhắn Tin"
         static let brokerTitle = "Các Broker"
     }
+    
+    struct Broker {
+        static let winRate = "Tỉ Lệ Thắng"
+        static let interest = "Lãi Theo Tháng"
+        static let totalStocks = "Tổng Số Mã"
+    }
 }

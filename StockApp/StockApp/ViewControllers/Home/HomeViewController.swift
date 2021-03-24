@@ -131,6 +131,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         header.tapHandler = { [weak self] in
             guard let self = self else { return }
             let vc = UIStoryboard.homeDetails.instantiateViewController(withIdentifier: self.homeDetailsIdentifier) as! HomeDetailsViewController
+            vc.endpoint = data.url
             vc.isBroker = data.itemType == .broker
             self.navigationController?.pushViewController(vc, animated: true)
         }
