@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -120,13 +121,13 @@
                                         <rect key="frame" x="124" y="0.0" width="124" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-nV-dfH">
-                                                <rect key="frame" x="41.5" y="0.0" width="41.5" height="20.5"/>
+                                                <rect key="frame" x="41.5" y="0.0" width="41.5" height="22.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0z-cG-Yx3">
-                                                <rect key="frame" x="41.5" y="24.5" width="41.5" height="22.5"/>
+                                                <rect key="frame" x="41.5" y="26.5" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -211,14 +212,17 @@
                 <outlet property="interestRateLabel" destination="fQ0-Jn-JRo" id="7DX-dQ-JtZ"/>
                 <outlet property="interestRateLineView" destination="aNc-Zx-AYt" id="oe9-hc-VKT"/>
                 <outlet property="interestRateValueLabel" destination="dwT-9b-yAi" id="zlB-I4-Pig"/>
+                <outlet property="interestView" destination="ezZ-PD-hDv" id="d6e-TE-6B2"/>
                 <outlet property="joiningTimeLabel" destination="q7y-lT-rT6" id="THX-oF-dAO"/>
                 <outlet property="mainView" destination="Xcy-BT-91c" id="0fr-Av-yeG"/>
                 <outlet property="nameLabel" destination="v5X-C2-7iC" id="g6K-pC-WSy"/>
                 <outlet property="totalStockLabel" destination="FXX-VP-eVr" id="UYD-ZZ-rBu"/>
                 <outlet property="totalStockValueLabel" destination="eub-D4-0l3" id="2w3-mL-by1"/>
+                <outlet property="totalStockView" destination="c7A-RA-UoH" id="LDe-Bp-x4M"/>
                 <outlet property="winRateLabel" destination="i0z-cG-Yx3" id="xak-OR-988"/>
                 <outlet property="winRateLineView" destination="9nN-lT-oyY" id="oBK-Js-Z5t"/>
                 <outlet property="winRateValueLabel" destination="dwT-nV-dfH" id="AA5-ku-sUT"/>
+                <outlet property="winRateView" destination="4X8-FG-hRV" id="6Vc-sC-0t5"/>
             </connections>
             <point key="canvasLocation" x="-122" y="16"/>
         </tableViewCell>

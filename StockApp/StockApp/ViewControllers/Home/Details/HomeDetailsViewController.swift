@@ -5,6 +5,7 @@
 //  Created by Sky on 3/10/21.
 //
 
+import Alamofire
 import UIKit
 
 class HomeDetailsViewController: BaseViewController {
@@ -34,11 +35,19 @@ class HomeDetailsViewController: BaseViewController {
     let brokerIdentifier = "BrokerViewCell"
     let roomIdentifier = "VerticalRoomItemViewCell"
     var isBroker: Bool = true
+    var brokers: [User] = []
+    var page: Int = 1
+    var total: Int = 0
+    var refreshControl = UIRefreshControl()
+    
+    var endpoint: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         setupNavbar()
+        fetchBrokerData()
+        setupRefreshControl()
     }
     
     
@@ -71,6 +80,60 @@ class HomeDetailsViewController: BaseViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
     }
+    
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        page = 1
+        brokers = []
+        tableView.reloadData()
+        fetchBrokerData()
+    }
+    
+    private func fetchBrokerData() {
+        guard let endpoint = endpoint else {
+            fatalError("endpoint must not be nil")
+        }
+        
+        let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
+                                  "Accept": "application/json",
+                                  "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjE1NTY0OTUzLCJleHAiOjE2MjA3NDg5NTMsIm5iZiI6MTYxNTU2NDk1MywianRpIjoiR3dMYUhUOVpmZ0g3ZEVtZSJ9.gO3sYmCiTs8YnNhRV3Y0-X_bDx0RQs5VtTsVIEKzSQ4"])
+        let parameters = ["page": page]
+        showLoadingIndicator()
+        AF.request(endpoint, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+            self.hideLoadingIndicator()
+            self.refreshControl.endRefreshing()
+            guard let data = response.data else { return }
+            
+            // this snippet code to debug if there is any mapping error
+            do {
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let brokerResponse = try decoder.decode(BrokerResponse.self, from: data)
+                self.total = brokerResponse.data.total
+                self.brokers.append(contentsOf: brokerResponse.data.list)
+                self.tableView.reloadData()
+            } catch DecodingError.dataCorrupted(let context) {
+                print(context)
+            } catch DecodingError.keyNotFound(let key, let context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.valueNotFound(let value, let context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.typeMismatch(let type, let context) {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+        }
+    }
 
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
@@ -79,20 +142,30 @@ class HomeDetailsViewController: BaseViewController {
 
 extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if isBroker {
+            return brokers.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isBroker {
             let cell = tableView.dequeueReusableCell(withIdentifier: brokerIdentifier, for: indexPath) as! BrokerViewCell
-            cell.configure()
+            cell.configure(user: brokers[indexPath.row])
             cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! VerticalRoomItemViewCell
-//            cell.configure(room: <#T##Room#>)
             cell.selectionStyle = .none
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == brokers.count && brokers.count < total {
+            page += 1
+            fetchBrokerData()
         }
     }
 }
