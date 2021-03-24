@@ -36,6 +36,9 @@ class HomeDetailsViewController: BaseViewController {
     let roomIdentifier = "VerticalRoomItemViewCell"
     var isBroker: Bool = true
     var brokers: [User] = []
+    var page: Int = 1
+    var total: Int = 0
+    var refreshControl = UIRefreshControl()
     
     var endpoint: String?
     
@@ -44,6 +47,7 @@ class HomeDetailsViewController: BaseViewController {
         configure()
         setupNavbar()
         fetchBrokerData()
+        setupRefreshControl()
     }
     
     
@@ -77,6 +81,18 @@ class HomeDetailsViewController: BaseViewController {
         
     }
     
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        page = 1
+        brokers = []
+        tableView.reloadData()
+        fetchBrokerData()
+    }
+    
     private func fetchBrokerData() {
         guard let endpoint = endpoint else {
             fatalError("endpoint must not be nil")
@@ -85,9 +101,11 @@ class HomeDetailsViewController: BaseViewController {
         let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
                                   "Accept": "application/json",
                                   "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjE1NTY0OTUzLCJleHAiOjE2MjA3NDg5NTMsIm5iZiI6MTYxNTU2NDk1MywianRpIjoiR3dMYUhUOVpmZ0g3ZEVtZSJ9.gO3sYmCiTs8YnNhRV3Y0-X_bDx0RQs5VtTsVIEKzSQ4"])
+        let parameters = ["page": page]
         showLoadingIndicator()
-        AF.request(endpoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+        AF.request(endpoint, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
             self.hideLoadingIndicator()
+            self.refreshControl.endRefreshing()
             guard let data = response.data else { return }
             
             // this snippet code to debug if there is any mapping error
@@ -97,7 +115,8 @@ class HomeDetailsViewController: BaseViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let brokerResponse = try decoder.decode(BrokerResponse.self, from: data)
-                self.brokers = brokerResponse.data.list
+                self.total = brokerResponse.data.total
+                self.brokers.append(contentsOf: brokerResponse.data.list)
                 self.tableView.reloadData()
             } catch DecodingError.dataCorrupted(let context) {
                 print(context)
@@ -138,9 +157,15 @@ extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: roomIdentifier, for: indexPath) as! VerticalRoomItemViewCell
-//            cell.configure(room: <#T##Room#>)
             cell.selectionStyle = .none
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == brokers.count && brokers.count < total {
+            page += 1
+            fetchBrokerData()
         }
     }
 }

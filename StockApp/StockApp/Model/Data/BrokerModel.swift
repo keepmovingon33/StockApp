@@ -30,9 +30,9 @@ struct User: Decodable {
     let name: String
     let email: String?
     let roleId: Int
-    let provider: String
-    let providerId: String
-    let avatar: String
+    let provider: String?
+    let providerId: String?
+    let avatar: String?
     let enableNotification: Bool
     let createdAt: Date
     let updatedAt: Date
