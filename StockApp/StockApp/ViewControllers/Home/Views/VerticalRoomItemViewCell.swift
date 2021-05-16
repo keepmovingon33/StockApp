@@ -90,7 +90,7 @@ class VerticalRoomItemViewCell: UITableViewCell {
             lockImage.image = nil
         }
         
-        roomLabel.attributedText = NSAttributedString(string: room.name, attributes: TextFormatting.blackMediumTitle)
+        roomLabel.attributedText = NSAttributedString(string: room.name ?? "", attributes: TextFormatting.blackMediumTitle)
         if let winrate = room.winRate {
             winRateValue.attributedText = NSAttributedString(string: "\(winrate)%", attributes: TextFormatting.smallGrayRegular)
             winRateView.isHidden = false

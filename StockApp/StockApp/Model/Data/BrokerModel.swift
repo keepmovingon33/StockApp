@@ -27,28 +27,55 @@ struct BrokerData: Decodable {
 
 struct User: Decodable {
     let id: String
-    let name: String
+    var name: String = ""
     let email: String?
-    let roleId: Int
+    var roleId: Int
     let provider: String?
     let providerId: String?
     let avatar: String?
-    let enableNotification: Bool
-    let createdAt: Date
-    let updatedAt: Date
+    var enableNotification: Bool = true
+    let createdAt: Date?
+    let updatedAt: Date?
     let winRate: Double?
     let profit: Double?
     let totalStockFinish: Int?
-    let totalStockWin: Int
-    let holdingTime: Double
-    let roomCount: Int
-    let totalSignal: Int
-    let visibleSetting: VisibleSettings
+    var totalStockWin: Int = 0
+    var holdingTime: Double = 0
+    var roomCount: Int = 0
+    var totalSignal: Int = 0
+    let visibleSetting: VisibleSettings?
     let phone: String?
     let gender: String?
     let birthday: Date?
     let desc: String?
-    let isActiveLately: Bool
+    var isActiveLately: Bool = true
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+        email = try? values.decode(String.self, forKey: .email)
+        roleId = try values.decode(Int.self, forKey: .roleId)
+        provider = try? values.decode(String.self, forKey: .provider)
+        providerId = try? values.decode(String.self, forKey: .providerId)
+        avatar = try? values.decode(String.self, forKey: .avatar)
+        enableNotification = try values.decode(Bool.self, forKey: .enableNotification)
+        createdAt = try? values.decode(Date.self, forKey: .createdAt)
+        updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
+        winRate = try? values.decode(Double.self, forKey: .winRate)
+        profit = try? values.decode(Double.self, forKey: .profit)
+        totalStockFinish = try? values.decode(Int.self, forKey: .totalStockFinish)
+        totalStockWin = try values.decode(Int.self, forKey: .totalStockWin)
+        holdingTime = try values.decode(Double.self, forKey: .holdingTime)
+        roomCount = try values.decode(Int.self, forKey: .roomCount)
+        totalSignal = try values.decode(Int.self, forKey: .totalSignal)
+        visibleSetting = try? values.decode(VisibleSettings.self, forKey: .visibleSetting)
+        phone = try? values.decode(String.self, forKey: .phone)
+        gender = try? values.decode(String.self, forKey: .gender)
+        birthday = try? values.decode(Date.self, forKey: .birthday)
+        desc = try? values.decode(String.self, forKey: .desc)
+        isActiveLately = try values.decode(Bool.self, forKey: .isActiveLately)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -74,6 +101,12 @@ struct User: Decodable {
         case birthday
         case desc = "description"
         case isActiveLately = "is_active_lately"
+    }
+    
+    enum RoleId: Int, Decodable {
+        case owner = 1
+        case admin = 2
+        case member = 3
     }
     
     struct VisibleSettings: Decodable {

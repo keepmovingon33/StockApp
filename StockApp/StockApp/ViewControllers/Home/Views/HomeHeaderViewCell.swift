@@ -30,7 +30,8 @@ class HomeHeaderViewCell: UITableViewHeaderFooterView {
         tapHandler?()
     }
     
-    func configure(title: String) {
-        titleLabel.attributedText = NSAttributedString(string: title, attributes: TextFormatting.purpleTitle)
+    func configure(data: HomeData) {
+        titleLabel.attributedText = NSAttributedString(string: data.title, attributes: TextFormatting.purpleTitle)
+        arrowImage.isHidden = data.url == nil
     }
 }

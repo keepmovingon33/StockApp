@@ -84,7 +84,7 @@ class HorizontalRoomItemViewCell: UICollectionViewCell {
             lockImage.image = nil
         }
         
-        nameLabel.attributedText = NSAttributedString(string: room.name, attributes: TextFormatting.blackMediumTitle)
+        nameLabel.attributedText = NSAttributedString(string: room.name ?? "", attributes: TextFormatting.blackMediumTitle)
         if let winrate = room.winRate {
             winRateLabel.attributedText = NSAttributedString(string: "\(winrate)%", attributes: TextFormatting.smallGrayRegular)
             winRateView.isHidden = false

@@ -100,7 +100,7 @@ class HomeDetailsViewController: BaseViewController {
         
         let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
                                   "Accept": "application/json",
-                                  "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjE1NTY0OTUzLCJleHAiOjE2MjA3NDg5NTMsIm5iZiI6MTYxNTU2NDk1MywianRpIjoiR3dMYUhUOVpmZ0g3ZEVtZSJ9.gO3sYmCiTs8YnNhRV3Y0-X_bDx0RQs5VtTsVIEKzSQ4"])
+                                  "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjIxMTIwOTk2LCJleHAiOjE2MjYzMDQ5OTYsIm5iZiI6MTYyMTEyMDk5NiwianRpIjoidG5NSVJzNmw0M0lTMDRpMyJ9.fdvleFdSNY_nkWvEAs8vWTzj9-JCAgMDCPVxROVooi4"])
         let parameters = ["page": page]
         showLoadingIndicator()
         AF.request(endpoint, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
