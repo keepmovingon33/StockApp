@@ -66,18 +66,43 @@ struct Room: Decodable {
     let winRate: Double?
     let profit: Double?
     let totalStockFinish: Int?
-    let totalStockWin: Int
+    var totalStockWin: Int = 0
     let createdAt: Date?
-    let updateAt: Date
+    var updateAt: Date = Date()
     let actualHoldingTime: Double?
     let holdingTime: Double?
-    let visibleSettings: VisibleSettings
+    let visibleSettings: VisibleSettings?
     let totalSignal: Int?
-    let isActiveLately: Bool
-    let shareLink: String
+    var isActiveLately: Bool = true
+    var shareLink: String = ""
     let userRoom: UserRoom?
     let owner: User?
     let member: Int?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        ownerId = try values.decode(String.self, forKey: .ownerId)
+        name = try values.decode(String.self, forKey: .name)
+        desc = try? values.decode(String.self, forKey: .desc)
+        avatar = try? values.decode(String.self, forKey: .avatar)
+        type = try values.decode(RoomType.self, forKey: .type)
+        status = try values.decode(String.self, forKey: .status)
+        winRate = try? values.decode(Double.self, forKey: .winRate)
+        profit = try? values.decode(Double.self, forKey: .profit)
+        totalStockFinish = try? values.decode(Int.self, forKey: .totalStockFinish)
+        totalStockWin = try values.decode(Int.self, forKey: .totalStockWin)
+        createdAt = try? values.decode(Date.self, forKey: .createdAt)
+        updateAt = try values.decode(Date.self, forKey: .updateAt)
+        actualHoldingTime = try? values.decode(Double.self, forKey: .actualHoldingTime)
+        holdingTime = try? values.decode(Double.self, forKey: .holdingTime)
+        visibleSettings = try? values.decode(VisibleSettings.self, forKey: .visibleSettings)
+        totalSignal = try? values.decode(Int.self, forKey: .totalSignal)
+        shareLink = try values.decode(String.self, forKey: .shareLink)
+        userRoom = try? values.decode(UserRoom.self, forKey: .userRoom)
+        owner = try? values.decode(User.self, forKey: .owner)
+        member = try? values.decode(Int.self, forKey: .member)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -108,6 +133,14 @@ struct Room: Decodable {
         case publication = "public"
         case privacy = "private"
         case closed = "closed"
+    }
+    
+    enum RoomStatus: String, Decodable {
+        case active
+        case blocked
+        case requested
+        case owner
+        case null
     }
     
     struct VisibleSettings: Decodable {
@@ -155,12 +188,12 @@ struct UserRoom: Decodable {
     let room_id: String
     let status: String
     let expired_at: Date?
-    let created_at: Date
-    let updated_at: Date
+    let created_at: Date?
+    let updated_at: Date?
     let join_at: Date
     let enable_notification_stock: Bool
     let enable_notification_message: Bool
-    let role_id: RoleType
+    let role_id: RoleType?
     
     enum RoleType: Int, Decodable {
         case owner = 1

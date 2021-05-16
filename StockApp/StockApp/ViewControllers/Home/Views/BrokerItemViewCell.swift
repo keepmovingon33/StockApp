@@ -64,7 +64,7 @@ class BrokerItemViewCell: UICollectionViewCell {
     func configure(user: User) {
         avatarImage.setImageWith(urlString: user.avatar, placeholder: UIImage(named: "memberAvatar"))
         nameLabel.attributedText = NSAttributedString(string: user.name, attributes: TextFormatting.blackRegularTitle)
-        let joiningTime = user.createdAt.toString(with: "dd/MM/yy")
+        let joiningTime = (user.createdAt ?? Date()).toString(with: "dd/MM/yy")
         joiningTimeLabel.attributedText = NSAttributedString(string: "Tham gia từ \(joiningTime)", attributes: TextFormatting.smallGrayRegular)
         if let profit = user.profit {
             interestRateValueLabel.attributedText = NSAttributedString(string: "\(profit)%", attributes: TextFormatting.bigGraySemibold)
