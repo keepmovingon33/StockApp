@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1AD23F35CA8FCB2AF5A3592A /* Pods_StockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD4C3CF7F5D49087854304C /* Pods_StockApp.framework */; };
+		3340ECA7265156E300AC5781 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340ECA6265156E300AC5781 /* RoomModel.swift */; };
+		3340ECAC265166AA00AC5781 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340ECAB265166AA00AC5781 /* Enums.swift */; };
 		3363E90025FBB6A0009297E8 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363E8FF25FBB6A0009297E8 /* UIStoryboard+Extension.swift */; };
 		3363E92825FC4554009297E8 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363E92725FC4554009297E8 /* HomeModel.swift */; };
 		3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AAA925F057A600D8D360 /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		050456BAB9CAF5F540812FFC /* Pods-StockApp-StockAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp-StockAppUITests.release.xcconfig"; path = "Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0723C550C25E571A6B0D0806 /* Pods-StockAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.release.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2E14E44B759122D5AE566741 /* Pods_StockApp_StockAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockApp_StockAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3340ECA6265156E300AC5781 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		3340ECAB265166AA00AC5781 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3363E8FF25FBB6A0009297E8 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		3363E92725FC4554009297E8 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		3368AAA625F057A600D8D360 /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,7 @@
 			children = (
 				3363E92725FC4554009297E8 /* HomeModel.swift */,
 				338C5587260B79B90035F92B /* BrokerModel.swift */,
+				3340ECA6265156E300AC5781 /* RoomModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			children = (
 				3368AAF525F3053F00D8D360 /* Constants.swift */,
 				3368AAFD25F306B000D8D360 /* Formatting.swift */,
+				3340ECAB265166AA00AC5781 /* Enums.swift */,
 				3363E92625FC4540009297E8 /* Data */,
 			);
 			path = Model;
@@ -624,6 +630,7 @@
 				3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */,
 				3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */,
 				3368AB2125F51EE700D8D360 /* HomeHeaderViewCell.swift in Sources */,
+				3340ECA7265156E300AC5781 /* RoomModel.swift in Sources */,
 				33DE8AC725FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift in Sources */,
 				33C7DB6725FBAFF10077D501 /* BaseViewController.swift in Sources */,
 				33C7DB4825F83D480077D501 /* VerticalRoomItemViewCell.swift in Sources */,
@@ -636,6 +643,7 @@
 				3368AB0425F308B900D8D360 /* UIColor+Extension.swift in Sources */,
 				3368AAF025F05A8D00D8D360 /* RoomDetailsViewController.swift in Sources */,
 				3363E90025FBB6A0009297E8 /* UIStoryboard+Extension.swift in Sources */,
+				3340ECAC265166AA00AC5781 /* Enums.swift in Sources */,
 				33C7DB6125F97E780077D501 /* BrokerViewCell.swift in Sources */,
 				3368AB2C25F5221A00D8D360 /* HorizontalRoomViewCell.swift in Sources */,
 				33C7DB5225F910EA0077D501 /* HomeDetailsViewController.swift in Sources */,

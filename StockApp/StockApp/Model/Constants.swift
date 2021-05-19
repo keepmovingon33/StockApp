@@ -44,7 +44,6 @@ struct Constants {
         static let searchPlaceholder = "Tìm kiếm các broker"
         static let sorting = "Xếp hạng theo"
         static let inbox = "Nhắn Tin"
-        static let brokerTitle = "Các Broker"
     }
     
     struct Broker {
