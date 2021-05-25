@@ -51,4 +51,18 @@ struct Constants {
         static let interest = "Lãi Theo Tháng"
         static let totalStocks = "Tổng Số Mã"
     }
+    
+    struct Login {
+        static let start = "BẮT ĐẦU"
+        static let facebook = "Đăng Nhập Bằng Facebook"
+        static let google = "Đăng Nhập Bằng Google +"
+        static let apple = "Đăng Nhập Bằng Apple ID"
+    }
+    
+    struct Warning {
+        static let warning = "Lưu Ý"
+        static let description = "Tài khoản đăng nhập bằng Apple ID sẽ không sử dụng được trên thiết bị android và web. Bạn có muốn tiếp tục?"
+        static let check = "Không hiện thông báo lần sau"
+        static let proceed = "Tiếp Tục"
+    }
 }

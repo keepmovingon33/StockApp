@@ -10,6 +10,8 @@
 		1AD23F35CA8FCB2AF5A3592A /* Pods_StockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD4C3CF7F5D49087854304C /* Pods_StockApp.framework */; };
 		3340ECA7265156E300AC5781 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340ECA6265156E300AC5781 /* RoomModel.swift */; };
 		3340ECAC265166AA00AC5781 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340ECAB265166AA00AC5781 /* Enums.swift */; };
+		3340ECB82655889100AC5781 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3340ECB72655889100AC5781 /* Login.storyboard */; };
+		3340ECC2265588B900AC5781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340ECC1265588B900AC5781 /* LoginViewController.swift */; };
 		3363E90025FBB6A0009297E8 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363E8FF25FBB6A0009297E8 /* UIStoryboard+Extension.swift */; };
 		3363E92825FC4554009297E8 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363E92725FC4554009297E8 /* HomeModel.swift */; };
 		3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AAA925F057A600D8D360 /* AppDelegate.swift */; };
@@ -37,6 +39,11 @@
 		3368AB5825F6796D00D8D360 /* HomeBrokerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3368AB5625F6796D00D8D360 /* HomeBrokerViewCell.xib */; };
 		3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368AB5C25F67AF300D8D360 /* BrokerItemViewCell.swift */; };
 		3368AB5F25F67AF300D8D360 /* BrokerItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3368AB5D25F67AF300D8D360 /* BrokerItemViewCell.xib */; };
+		33699B6E2655970D00E3990F /* WarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699B6D2655970D00E3990F /* WarningViewController.swift */; };
+		33699B8826568E7700E3990F /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33699B8726568E7700E3990F /* Create.storyboard */; };
+		33699B972656926500E3990F /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699B962656926500E3990F /* CreateViewController.swift */; };
+		33699B9C2656927C00E3990F /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699B9B2656927C00E3990F /* CreateRoomViewController.swift */; };
+		33699BA42656928C00E3990F /* CreateStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BA32656928C00E3990F /* CreateStockViewController.swift */; };
 		338C5588260B79B90035F92B /* BrokerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C5587260B79B90035F92B /* BrokerModel.swift */; };
 		33C7DB4825F83D480077D501 /* VerticalRoomItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */; };
 		33C7DB4925F83D480077D501 /* VerticalRoomItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */; };
@@ -76,6 +83,8 @@
 		2E14E44B759122D5AE566741 /* Pods_StockApp_StockAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockApp_StockAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3340ECA6265156E300AC5781 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		3340ECAB265166AA00AC5781 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		3340ECB72655889100AC5781 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		3340ECC1265588B900AC5781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3363E8FF25FBB6A0009297E8 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		3363E92725FC4554009297E8 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		3368AAA625F057A600D8D360 /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +118,11 @@
 		3368AB5625F6796D00D8D360 /* HomeBrokerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeBrokerViewCell.xib; sourceTree = "<group>"; };
 		3368AB5C25F67AF300D8D360 /* BrokerItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerItemViewCell.swift; sourceTree = "<group>"; };
 		3368AB5D25F67AF300D8D360 /* BrokerItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrokerItemViewCell.xib; sourceTree = "<group>"; };
+		33699B6D2655970D00E3990F /* WarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewController.swift; sourceTree = "<group>"; };
+		33699B8726568E7700E3990F /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
+		33699B962656926500E3990F /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		33699B9B2656927C00E3990F /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		33699BA32656928C00E3990F /* CreateStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStockViewController.swift; sourceTree = "<group>"; };
 		338C5587260B79B90035F92B /* BrokerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerModel.swift; sourceTree = "<group>"; };
 		33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalRoomItemViewCell.swift; sourceTree = "<group>"; };
 		33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalRoomItemViewCell.xib; sourceTree = "<group>"; };
@@ -166,6 +180,16 @@
 				0723C550C25E571A6B0D0806 /* Pods-StockAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3340ECB62655854000AC5781 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3340ECB72655889100AC5781 /* Login.storyboard */,
+				3340ECC1265588B900AC5781 /* LoginViewController.swift */,
+				33699B6D2655970D00E3990F /* WarningViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		3363E92625FC4540009297E8 /* Data */ = {
@@ -262,6 +286,8 @@
 		3368AAEB25F0594300D8D360 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				33699B8626568E5100E3990F /* Create */,
+				3340ECB62655854000AC5781 /* Login */,
 				3368AB1925F51A4100D8D360 /* Home */,
 				3368AB1825F51A3400D8D360 /* RoomDetails */,
 				33C7DB6625FBAFF10077D501 /* BaseViewController.swift */,
@@ -326,6 +352,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		33699B8626568E5100E3990F /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				33699B8726568E7700E3990F /* Create.storyboard */,
+				33699B962656926500E3990F /* CreateViewController.swift */,
+				33699B9B2656927C00E3990F /* CreateRoomViewController.swift */,
+				33699BA32656928C00E3990F /* CreateStockViewController.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		33C7DB5025F910C40077D501 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +425,7 @@
 				3368AAA325F057A600D8D360 /* Frameworks */,
 				3368AAA425F057A600D8D360 /* Resources */,
 				7A15539D2A12E351CCF808F2 /* [CP] Embed Pods Frameworks */,
+				693F3F16F31DCF82A032D568 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,6 +464,7 @@
 				3368AAC425F057A900D8D360 /* Frameworks */,
 				3368AAC525F057A900D8D360 /* Resources */,
 				8E5D1BC3AE304BAC227D56F0 /* [CP] Embed Pods Frameworks */,
+				76701165D3E8416E04E2AAC2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -490,11 +529,13 @@
 				33C7DB6225F97E780077D501 /* BrokerViewCell.xib in Resources */,
 				3368AAB625F057A800D8D360 /* LaunchScreen.storyboard in Resources */,
 				3368AAB325F057A800D8D360 /* Assets.xcassets in Resources */,
+				33699B8826568E7700E3990F /* Create.storyboard in Resources */,
 				3368AAB125F057A600D8D360 /* Main.storyboard in Resources */,
 				3368AB2D25F5221A00D8D360 /* HorizontalRoomViewCell.xib in Resources */,
 				3368AB3425F5235200D8D360 /* HorizontalRoomItemViewCell.xib in Resources */,
 				33C7DB4925F83D480077D501 /* VerticalRoomItemViewCell.xib in Resources */,
 				33C7DB5A25F910FC0077D501 /* HomeDetails.storyboard in Resources */,
+				3340ECB82655889100AC5781 /* Login.storyboard in Resources */,
 				3368AB1B25F51DCC00D8D360 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +577,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		693F3F16F31DCF82A032D568 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76701165D3E8416E04E2AAC2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A15539D2A12E351CCF808F2 /* [CP] Embed Pods Frameworks */ = {
@@ -623,12 +698,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3340ECC2265588B900AC5781 /* LoginViewController.swift in Sources */,
 				3368AAFE25F306B000D8D360 /* Formatting.swift in Sources */,
 				33DE8ABF25FD97A000CDA344 /* Date+Extension.swift in Sources */,
+				33699B972656926500E3990F /* CreateViewController.swift in Sources */,
 				338C5588260B79B90035F92B /* BrokerModel.swift in Sources */,
 				3368AB0925F4510200D8D360 /* UIView+Extension.swift in Sources */,
 				3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */,
 				3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */,
+				33699B6E2655970D00E3990F /* WarningViewController.swift in Sources */,
 				3368AB2125F51EE700D8D360 /* HomeHeaderViewCell.swift in Sources */,
 				3340ECA7265156E300AC5781 /* RoomModel.swift in Sources */,
 				33DE8AC725FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift in Sources */,
@@ -639,8 +717,10 @@
 				33DE8AB825FD89CB00CDA344 /* UIImageView+Extension.swift in Sources */,
 				3368AB1425F519D900D8D360 /* HomeViewController.swift in Sources */,
 				3368AAAC25F057A600D8D360 /* SceneDelegate.swift in Sources */,
+				33699B9C2656927C00E3990F /* CreateRoomViewController.swift in Sources */,
 				3368AB5725F6796D00D8D360 /* HomeBrokerViewCell.swift in Sources */,
 				3368AB0425F308B900D8D360 /* UIColor+Extension.swift in Sources */,
+				33699BA42656928C00E3990F /* CreateStockViewController.swift in Sources */,
 				3368AAF025F05A8D00D8D360 /* RoomDetailsViewController.swift in Sources */,
 				3363E90025FBB6A0009297E8 /* UIStoryboard+Extension.swift in Sources */,
 				3340ECAC265166AA00AC5781 /* Enums.swift in Sources */,
@@ -833,7 +913,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.StockApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beeknights.stockVN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -854,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.StockApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beeknights.stockVN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

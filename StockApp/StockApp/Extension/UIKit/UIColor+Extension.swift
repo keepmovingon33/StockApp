@@ -13,6 +13,7 @@ extension UIColor {
     static let grayColor = UIColor(hexString: "#8E8E93")
     static let blackColor = UIColor(hexString: "#333333")
     static let shadowColor = UIColor(hexString: "#DCC7FF")
+    static let whiteTextColor = UIColor(hexString: "#FEFEFE")
 }
 
 extension UIColor {
