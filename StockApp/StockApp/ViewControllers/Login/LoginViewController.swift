@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+import AuthenticationServices
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var startLabel: UILabel!
@@ -62,14 +64,10 @@ class LoginViewController: UIViewController {
     @IBAction func facebookButtonTapped(_ sender: Any) {
         let login = LoginManager()
         login.logIn(permissions: ["email"], from: self) { (result, error) in
-            if let e = error {
-                print("process error \(e.localizedDescription)")
-            } else if let result = result {
-                if result.isCancelled {
-                    print("canceled")
-                } else {
-                    print("Logged in with token \(result.token)")
-                }
+            if let result = result, let token = result.token?.tokenString {
+                self.callLoginAPI(provider: "facebook", accessToken: token)
+            } else {
+                Helpers.showAlert(message: "Facebook Login Cancelled")
             }
         }
     }
@@ -81,25 +79,108 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func appleButtonTapped(_ sender: Any) {
+        // if user has not clicked to turn off the popup
         if !UserDefaults.standard.bool(forKey: "NotShowingAppleWarning") {
-            let vc = UIStoryboard.login.instantiateViewController(withIdentifier: "WarningViewController")
+            let vc = UIStoryboard.login.instantiateViewController(withIdentifier: "WarningViewController") as! WarningViewController
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
+            vc.continueHandler = { [weak self] in
+                self?.appleSignedIn()
+            }
             self.present(vc, animated: true, completion: nil)
-        } else {
-            print("hello")
+        } else { // if user has clicked to turn off the popup, we will handle the login
+            appleSignedIn()
         }
+    }
+    
+    private func callLoginAPI(provider: String, accessToken: String) {
+        let endpoint: String = "https://admin.bstock.vn/api/social-login"
+        let headers = HTTPHeaders(["Content-Type": "application/json",
+                                  "Accept": "application/json"])
+        let parameters = [
+            "one_signal_id" : "",
+            "provider" : provider,
+            "platform" : "iOS",
+            "access_token" : accessToken
+        ] as [String : Any]
+        showLoadingIndicator()
+        AF.request(endpoint, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+            self.hideLoadingIndicator()
+            guard let data = response.data else { return }
+            
+            // this snippet code to debug if there is any mapping error
+            do {
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let loginResponse = try decoder.decode(LoginResponse.self, from: data)
+                let token = loginResponse.data.token
+                print(token)
+            } catch DecodingError.dataCorrupted(let context) {
+                print(context)
+            } catch DecodingError.keyNotFound(let key, let context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.valueNotFound(let value, let context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.typeMismatch(let type, let context) {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+        }
+    }
+    
+    
+    private func appleSignedIn() {
+        // Handle Apple login
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        } else {
+            Helpers.showAlert(message: "device is not supported for Apple login")
+        }
+        
+    }
+    
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
     }
 }
 
 extension LoginViewController: GIDSignInDelegate {
+    // Handle Google login callback
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error != nil {
-            print("show error")
+        if let token = user.authentication.accessToken {
+            callLoginAPI(provider: "google", accessToken: token)
         } else {
-            if let token = user.authentication.accessToken {
-                print(token)
-            }
+            Helpers.showAlert(message: error.localizedDescription)
         }
+    }
+}
+
+@available(iOS 13.0, *)
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential, let accessToken = appleIDCredential.identityToken, let token = String(data: accessToken, encoding: .utf8) {
+            callLoginAPI(provider: "apple", accessToken: token)
+        } else {
+            Helpers.showAlert(message: "Login failed")
+        }
+    }
+    
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        Helpers.showAlert(message: "Apple Login Failed")
     }
 }

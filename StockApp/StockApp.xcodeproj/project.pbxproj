@@ -44,6 +44,9 @@
 		33699B972656926500E3990F /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699B962656926500E3990F /* CreateViewController.swift */; };
 		33699B9C2656927C00E3990F /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699B9B2656927C00E3990F /* CreateRoomViewController.swift */; };
 		33699BA42656928C00E3990F /* CreateStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BA32656928C00E3990F /* CreateStockViewController.swift */; };
+		33699BE0265DC99400E3990F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BDF265DC99400E3990F /* Helpers.swift */; };
+		33699BE8265DCA4500E3990F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */; };
+		33699BED265E9BE100E3990F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BEC265E9BE100E3990F /* LoginModel.swift */; };
 		338C5588260B79B90035F92B /* BrokerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C5587260B79B90035F92B /* BrokerModel.swift */; };
 		33C7DB4825F83D480077D501 /* VerticalRoomItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */; };
 		33C7DB4925F83D480077D501 /* VerticalRoomItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */; };
@@ -123,6 +126,9 @@
 		33699B962656926500E3990F /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		33699B9B2656927C00E3990F /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		33699BA32656928C00E3990F /* CreateStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStockViewController.swift; sourceTree = "<group>"; };
+		33699BDF265DC99400E3990F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		33699BEC265E9BE100E3990F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		338C5587260B79B90035F92B /* BrokerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerModel.swift; sourceTree = "<group>"; };
 		33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalRoomItemViewCell.swift; sourceTree = "<group>"; };
 		33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalRoomItemViewCell.xib; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				3363E92725FC4554009297E8 /* HomeModel.swift */,
 				338C5587260B79B90035F92B /* BrokerModel.swift */,
 				3340ECA6265156E300AC5781 /* RoomModel.swift */,
+				33699BEC265E9BE100E3990F /* LoginModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 				3368AAF425F3052200D8D360 /* Model */,
 				3368AAE625F0590D00D8D360 /* Resources */,
 				3368AAEB25F0594300D8D360 /* ViewControllers */,
+				33699BDE265DC97A00E3990F /* Utils */,
 			);
 			path = StockApp;
 			sourceTree = "<group>";
@@ -363,6 +371,14 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
+		33699BDE265DC97A00E3990F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				33699BDF265DC99400E3990F /* Helpers.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		33C7DB5025F910C40077D501 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +407,7 @@
 				3363E8FF25FBB6A0009297E8 /* UIStoryboard+Extension.swift */,
 				33DE8AB725FD89CB00CDA344 /* UIImageView+Extension.swift */,
 				33DE8AC625FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift */,
+				33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -717,14 +734,17 @@
 				33DE8AB825FD89CB00CDA344 /* UIImageView+Extension.swift in Sources */,
 				3368AB1425F519D900D8D360 /* HomeViewController.swift in Sources */,
 				3368AAAC25F057A600D8D360 /* SceneDelegate.swift in Sources */,
+				33699BE8265DCA4500E3990F /* UIApplication+Extension.swift in Sources */,
 				33699B9C2656927C00E3990F /* CreateRoomViewController.swift in Sources */,
 				3368AB5725F6796D00D8D360 /* HomeBrokerViewCell.swift in Sources */,
 				3368AB0425F308B900D8D360 /* UIColor+Extension.swift in Sources */,
 				33699BA42656928C00E3990F /* CreateStockViewController.swift in Sources */,
 				3368AAF025F05A8D00D8D360 /* RoomDetailsViewController.swift in Sources */,
+				33699BED265E9BE100E3990F /* LoginModel.swift in Sources */,
 				3363E90025FBB6A0009297E8 /* UIStoryboard+Extension.swift in Sources */,
 				3340ECAC265166AA00AC5781 /* Enums.swift in Sources */,
 				33C7DB6125F97E780077D501 /* BrokerViewCell.swift in Sources */,
+				33699BE0265DC99400E3990F /* Helpers.swift in Sources */,
 				3368AB2C25F5221A00D8D360 /* HorizontalRoomViewCell.swift in Sources */,
 				33C7DB5225F910EA0077D501 /* HomeDetailsViewController.swift in Sources */,
 				3368AAF625F3053F00D8D360 /* Constants.swift in Sources */,

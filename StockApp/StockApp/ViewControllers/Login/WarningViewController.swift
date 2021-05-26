@@ -23,6 +23,8 @@ class WarningViewController: UIViewController {
     @IBOutlet weak var warningView: UIView!
     @IBOutlet weak var checkboxView: UIView!
     
+    var continueHandler: SimpleCompletion?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,7 +64,10 @@ class WarningViewController: UIViewController {
     @IBAction func continueButtonTapped(_ sender: Any) {
         let value = checkBoxImageView.image == UIImage(named: "checked") ? true : false
         UserDefaults.standard.set(value, forKey: "NotShowingAppleWarning")
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            self.continueHandler?()
+        })
     }
     
     
