@@ -41,7 +41,7 @@ struct User: Decodable {
     let totalStockFinish: Int?
     var totalStockWin: Int = 0
     var holdingTime: Double = 0
-    var roomCount: Int = 0
+    var roomCount: Int? = 0
     var totalSignal: Int = 0
     let visibleSetting: VisibleSettings?
     let phone: String?

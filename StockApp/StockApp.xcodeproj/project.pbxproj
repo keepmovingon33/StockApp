@@ -48,6 +48,7 @@
 		33699BE8265DCA4500E3990F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */; };
 		33699BED265E9BE100E3990F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BEC265E9BE100E3990F /* LoginModel.swift */; };
 		338C5588260B79B90035F92B /* BrokerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C5587260B79B90035F92B /* BrokerModel.swift */; };
+		33B44A222661C95D006616B8 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B44A212661C95D006616B8 /* BaseNavigationController.swift */; };
 		33C7DB4825F83D480077D501 /* VerticalRoomItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */; };
 		33C7DB4925F83D480077D501 /* VerticalRoomItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */; };
 		33C7DB5225F910EA0077D501 /* HomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB5125F910E90077D501 /* HomeDetailsViewController.swift */; };
@@ -130,6 +131,7 @@
 		33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		33699BEC265E9BE100E3990F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		338C5587260B79B90035F92B /* BrokerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerModel.swift; sourceTree = "<group>"; };
+		33B44A212661C95D006616B8 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		33C7DB4625F83D480077D501 /* VerticalRoomItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalRoomItemViewCell.swift; sourceTree = "<group>"; };
 		33C7DB4725F83D480077D501 /* VerticalRoomItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalRoomItemViewCell.xib; sourceTree = "<group>"; };
 		33C7DB5125F910E90077D501 /* HomeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				3368AB1925F51A4100D8D360 /* Home */,
 				3368AB1825F51A3400D8D360 /* RoomDetails */,
 				33C7DB6625FBAFF10077D501 /* BaseViewController.swift */,
+				33B44A212661C95D006616B8 /* BaseNavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				3368AB0925F4510200D8D360 /* UIView+Extension.swift in Sources */,
 				3368AB5E25F67AF300D8D360 /* BrokerItemViewCell.swift in Sources */,
 				3368AAAA25F057A600D8D360 /* AppDelegate.swift in Sources */,
+				33B44A222661C95D006616B8 /* BaseNavigationController.swift in Sources */,
 				33699B6E2655970D00E3990F /* WarningViewController.swift in Sources */,
 				3368AB2125F51EE700D8D360 /* HomeHeaderViewCell.swift in Sources */,
 				3340ECA7265156E300AC5781 /* RoomModel.swift in Sources */,

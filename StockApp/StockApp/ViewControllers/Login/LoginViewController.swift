@@ -104,7 +104,7 @@ class LoginViewController: BaseViewController {
             "access_token" : accessToken
         ] as [String : Any]
         showLoadingIndicator()
-        AF.request(endpoint, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+        AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             self.hideLoadingIndicator()
             guard let data = response.data else { return }
             
@@ -115,8 +115,15 @@ class LoginViewController: BaseViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let loginResponse = try decoder.decode(LoginResponse.self, from: data)
-                let token = loginResponse.data.token
-                print(token)
+                if let data = loginResponse.data {
+                    UserDefaults.standard.set(data.token, forKey: "Access Token")
+                    let viewController = UIStoryboard.home
+                        .instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                    let nav = BaseNavigationController(rootViewController: viewController)
+                    UIApplication.shared.windows.first?.rootViewController = nav
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                }
+                
             } catch DecodingError.dataCorrupted(let context) {
                 print(context)
             } catch DecodingError.keyNotFound(let key, let context) {
