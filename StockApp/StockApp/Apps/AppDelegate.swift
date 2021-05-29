@@ -11,6 +11,10 @@ import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    static var instance: AppDelegate {
+        return (UIApplication.shared.delegate as! AppDelegate)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GIDSignIn.sharedInstance().clientID = "367758712566-93dspltee4alhau21ngm66rbtp8hqhsq.apps.googleusercontent.com"

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct UserResponse: Decodable {
+    let message: String
+    let code: Int
+    let data: User?
+}
+
 struct BrokerResponse: Decodable {
     let message: String
     let code: Int
