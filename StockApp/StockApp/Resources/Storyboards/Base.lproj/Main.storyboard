@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XkW-dJ-PID">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Redirect View Controller-->
+        <scene sceneID="GNX-lQ-kCe">
+            <objects>
+                <viewController storyboardIdentifier="RedirectViewController" id="XkW-dJ-PID" customClass="RedirectViewController" customModule="StockApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dbc-ko-XyG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhE-mA-PjR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ncV-kg-pSd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yhE-mA-PjR" secondAttribute="trailing" id="Hdo-7n-w4n"/>
+                            <constraint firstItem="yhE-mA-PjR" firstAttribute="leading" secondItem="Dbc-ko-XyG" secondAttribute="leading" id="ht6-sP-wlg"/>
+                            <constraint firstItem="yhE-mA-PjR" firstAttribute="top" secondItem="Dbc-ko-XyG" secondAttribute="top" id="pE7-0R-7Eu"/>
+                            <constraint firstAttribute="bottom" secondItem="yhE-mA-PjR" secondAttribute="bottom" id="qta-wZ-cw4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="yhE-mA-PjR" id="QQJ-xH-enV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEf-6d-SDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1832" y="133"/>
+        </scene>
         <!--Room Details View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

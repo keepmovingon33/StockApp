@@ -116,12 +116,11 @@ class LoginViewController: BaseViewController {
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let loginResponse = try decoder.decode(LoginResponse.self, from: data)
                 if let data = loginResponse.data {
-                    UserDefaults.standard.set(data.token, forKey: "Access Token")
-                    let viewController = UIStoryboard.home
-                        .instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                    let nav = BaseNavigationController(rootViewController: viewController)
-                    UIApplication.shared.windows.first?.rootViewController = nav
-                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    // save user
+                    CurrentSession.instance.user = data.user
+                    // save token
+                    CurrentSession.instance.accessToken = data.token
+                    AppDelegate.instance.switchToHomeViewController()
                 }
                 
             } catch DecodingError.dataCorrupted(let context) {
