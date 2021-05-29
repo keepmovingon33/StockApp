@@ -45,8 +45,10 @@ class HomeViewController: BaseViewController {
     
     private func fetchHomeData() {
         let endpoint: String = "https://admin.bstock.vn/api/v3/home"
+        let token = UserDefaults.standard.string(forKey: "Access Token")
         let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
                                   "Accept": "application/json",
+//                                  "Authorization": "Bearer \(token ?? "")"])
                                   "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjIxMTIwOTk2LCJleHAiOjE2MjYzMDQ5OTYsIm5iZiI6MTYyMTEyMDk5NiwianRpIjoidG5NSVJzNmw0M0lTMDRpMyJ9.fdvleFdSNY_nkWvEAs8vWTzj9-JCAgMDCPVxROVooi4"])
         showLoadingIndicator()
         AF.request(endpoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { response in
@@ -60,8 +62,8 @@ class HomeViewController: BaseViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let homeResponse = try decoder.decode(HomeResponse.self, from: data)
-//                self.homeData = homeResponse.data.filter({ $0.rooms.count != 0 || $0.brokers.count != 0 })
-                self.homeData = homeResponse.data
+                self.homeData = homeResponse.data.filter({ $0.rooms.count != 0 || $0.brokers.count != 0 })
+//                self.homeData = homeResponse.data
                 self.tableView.reloadData()
                 
             } catch DecodingError.dataCorrupted(let context) {

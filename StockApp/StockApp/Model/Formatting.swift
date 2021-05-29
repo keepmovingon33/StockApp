@@ -17,9 +17,11 @@ struct TextFormatting {
     static let purpleValue: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor:  UIColor.purpleColor]
     static let lightPurpleValue: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 14, weight: .light), .foregroundColor:  UIColor.lightPurpleColor]
     static let purpleButtonText: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 14, weight: .semibold), .foregroundColor:  UIColor.purpleColor]
+    static let purpleMediumText: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .medium), .foregroundColor: UIColor.purpleColor]
     static let purpleTitle: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold), .foregroundColor:  UIColor.purpleColor]
     static let purpleHeader: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor:  UIColor.purpleColor]
     static let redText: [NSAttributedString.Key : Any] = [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor:  UIColor.red]
+    static let whiteText: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16, weight: .semibold), .foregroundColor: UIColor.whiteTextColor]
 }
 
 

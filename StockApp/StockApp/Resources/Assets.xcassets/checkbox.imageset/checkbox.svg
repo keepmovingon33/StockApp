@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="11px" viewBox="0 0 11 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>checkbox</title>
+    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="popup/1-block/warning" transform="translate(-46.000000, -264.000000)" fill="#9676F9" fill-rule="nonzero">
+            <g id="Group" transform="translate(46.000000, 260.000000)">
+                <path d="M9.324,4 C9.64133492,4 9.9166655,4.1166655 10.15,4.35 C10.3833345,4.5833345 10.5,4.85866508 10.5,5.176 L10.5,13.324 C10.5,13.6413349 10.3833345,13.9166655 10.15,14.15 C9.9166655,14.3833345 9.64133492,14.5 9.324,14.5 L1.176,14.5 C0.85866508,14.5 0.5833345,14.3833345 0.35,14.15 C0.1166655,13.9166655 0,13.6413349 0,13.324 L0,5.176 C0,4.85866508 0.1166655,4.5833345 0.35,4.35 C0.5833345,4.1166655 0.85866508,4 1.176,4 L9.324,4 Z M9.324,5.176 L1.176,5.176 L1.176,13.324 L9.324,13.324 L9.324,5.176 Z" id="checkbox"></path>
+            </g>
+        </g>
+    </g>
+</svg>

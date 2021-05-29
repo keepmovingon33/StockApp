@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GIDSignIn.sharedInstance().clientID = "367758712566-93dspltee4alhau21ngm66rbtp8hqhsq.apps.googleusercontent.com"
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         return true
     }
 
@@ -33,6 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let facebookLogin = ApplicationDelegate.shared.application(
+                                app,
+                                open: url,
+                                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+                            )
+        let googleLogin = GIDSignIn.sharedInstance().handle(url)
+        return facebookLogin || googleLogin
+    }
 }
 

@@ -79,14 +79,7 @@ class HomeDetailsViewController: BaseViewController {
     func setupNavbar() {
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
-        navigationController?.navigationBar.barTintColor = .white
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.purpleColor
-        navigationController?.navigationBar.titleTextAttributes = TextFormatting.purpleHeader
         
-        // lam mat duong line giua navbar voi view
-//        navigationController?.navigationBar.isTranslucent = false
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     
