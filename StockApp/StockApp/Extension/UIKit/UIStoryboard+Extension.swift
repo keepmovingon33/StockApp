@@ -13,4 +13,5 @@ extension UIStoryboard {
     static let homeDetails = UIStoryboard(name: "HomeDetails", bundle: nil)
     static let room = UIStoryboard(name: "Rooms", bundle: nil)
     static let login = UIStoryboard(name: "Login", bundle: nil)
+    static let create = UIStoryboard(name: "Create", bundle: nil)
 }

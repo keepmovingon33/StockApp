@@ -65,4 +65,42 @@ struct Constants {
         static let check = "Không hiện thông báo lần sau"
         static let proceed = "Tiếp Tục"
     }
+    
+    struct Create {
+        static let createStock = "Tạo Mã Cổ Phiếu Mới"
+        static let createRoom = "Tạo Phòng Chat Mới"
+        static let orText = "Hoặc"
+        static let title = "Tạo"
+    }
+    
+    struct CreateRoom {
+        static let roomName = "Tên Phòng"
+        static let roomNamePlaceholder = "Nhập Tên"
+        static let note = "Ghi Chú"
+        static let notePlaceholder = "Nhập Nội Dung"
+        static let roomMode = "Chế Độ Phòng"
+        static let roomModePublic = "Công Khai"
+        static let roomModePrivate = "Riêng Tư"
+        static let roomModeSecret = "Bí Mật"
+        static let disclaimer = "Ai cũng có thể thấy phòng trên danh sách các phòng và có thể tham gia phòng không cần xét duyệt"
+        static let finishButton = "Hoàn Thành"
+        static let title = "Tạo Phòng Chat Mới"
+    }
+    
+    struct CreateStock {
+        static let stockCode = "Mã Cổ Phiếu"
+        static let stockCodePlaceholder = "Nhập Mã Cổ Phiếu"
+        static let price = "Giá Mua (x1000)"
+        static let pricePlaceholder = "Nhập Giá Mua"
+        static let holdingTime = "Thời Gian Nắm Giữ"
+        static let holdingTimeValue = "Dưới 24 Tháng"
+        static let note = "Ghi Chú"
+        static let notePlaceholder = "Nhập Nội Dung"
+        static let publish = "Đăng Vào"
+        static let publishValue1 = "Phòng Duy Lê VPRO Cổ Phiếu Lướt Sóng"
+        static let publishValue2 = "Phòng Đầu Tư Thắng To"
+        static let publishValue3 = "Sóng To Cá Lớn"
+        static let finishButton = "Hoàn Thành"
+        static let title = "Tạo Mã Cổ Phiếu Mới"
+    }
 }
