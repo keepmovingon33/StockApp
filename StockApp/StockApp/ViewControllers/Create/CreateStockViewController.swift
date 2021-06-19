@@ -49,7 +49,7 @@ class CreateStockViewController: BaseViewController {
         configure()
         setupTableView()
         setupStyling()
-        title = Constants.CreateRoom.title
+        title = Constants.CreateStock.title
         setupBackButton()
     }
     
