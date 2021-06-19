@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4EK-65-CoR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -61,10 +61,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an1-up-edt">
-                                <rect key="frame" x="16" y="104" width="382" height="317.5"/>
+                                <rect key="frame" x="16" y="60" width="382" height="361.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRL-49-Usu">
-                                        <rect key="frame" x="60" y="55" width="262" height="207.5"/>
+                                        <rect key="frame" x="60" y="77" width="262" height="207.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mqs-kr-iVz">
                                                 <rect key="frame" x="0.0" y="0.0" width="262" height="163.5"/>
@@ -892,24 +892,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9i-fN-h37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3017.3913043478265" y="154.6875"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZcA-Bw-5Mj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4EK-65-CoR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1La-qP-9Rh">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tgQ-om-RAe" kind="relationship" relationship="rootViewController" id="MM8-Oa-ylB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6z0-MF-UX9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="197.10144927536234" y="140.625"/>
         </scene>
     </scenes>
     <resources>

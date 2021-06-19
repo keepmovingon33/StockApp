@@ -52,7 +52,7 @@ class HomeDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        setupNavbar()
+        setupBackButton()
         fetchBrokerData()
         setupRefreshControl()
         setupPickerView()
@@ -73,14 +73,6 @@ class HomeDetailsViewController: BaseViewController {
         sortingTypeImage.image = UIImage(named: "dropdown")
         filterLabel.attributedText = NSAttributedString(string: Constants.RoomDetails.winRate, attributes: TextFormatting.purpleValue)
         filterImage.image = UIImage(named: "dropdown")
-    }
-    
-    // will setup this navbar for the first screen
-    func setupNavbar() {
-        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
-        
-        
     }
     
     private func setupRefreshControl() {
@@ -184,10 +176,6 @@ class HomeDetailsViewController: BaseViewController {
     
     @objc func cancelPicker() {
         self.view.endEditing(true)
-    }
-
-    @objc func backButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
     }
     
 }

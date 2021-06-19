@@ -30,6 +30,7 @@ class HomeViewController: BaseViewController {
     let brokerIdentifier = "HomeBrokerViewCell"
     let verticalRoomIdentifier = "VerticalRoomItemViewCell"
     let homeDetailsIdentifier = "HomeDetailsViewController"
+    let createIdentifier = "CreateViewController"
     var homeData: [HomeData] = []
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class HomeViewController: BaseViewController {
         
         title = Constants.HomeScreen.title
         fetchHomeData()
+        setupRightButton(image: UIImage(named: "create"))
     }
     
     private func fetchHomeData() {
@@ -81,6 +83,11 @@ class HomeViewController: BaseViewController {
                 print("error: ", error)
             }
         }
+    }
+    
+    override func rightButtonTap(_: Any) {
+        let vc = UIStoryboard.create.instantiateViewController(withIdentifier: self.createIdentifier) as! CreateViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

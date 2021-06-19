@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateStockViewController: UIViewController {
+class CreateStockViewController: BaseViewController {
     
     @IBOutlet weak var createStockView: UIView!
     @IBOutlet weak var stockCodeLabel: UILabel!
@@ -50,6 +50,7 @@ class CreateStockViewController: UIViewController {
         setupTableView()
         setupStyling()
         title = Constants.CreateRoom.title
+        setupBackButton()
     }
     
     private func configure() {
