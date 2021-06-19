@@ -25,3 +25,19 @@ extension UIView {
         layer.shadowRadius = radius
       }
 }
+
+extension UIView {
+    func setGradientBackground() {
+        let colorTop =  UIColor.init(hexString: "#607AE2").cgColor
+        let colorBottom = UIColor.init(hexString: "#9A71E7").cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.locations = [0.0, 1.0] // color change from top to bottom
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5); // color change from left to right
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5);
+        gradientLayer.frame = self.bounds
+                
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
+}
