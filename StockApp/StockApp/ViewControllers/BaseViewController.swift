@@ -32,6 +32,25 @@ class BaseViewController: UIViewController {
         view.addSubview(spinner)
     }
     
+    func setupRightButton(image: UIImage?) {
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(rightButtonTap(_:)))
+        self.navigationItem.rightBarButtonItem  = button
+    }
+    
+    @objc func rightButtonTap(_: Any) {
+        // override
+    }
+    
+    // will setup this navbar for the first screen
+    func setupBackButton() {
+        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func showLoadingIndicator() {
         spinner.startAnimating()
     }

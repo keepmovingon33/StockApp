@@ -22,6 +22,8 @@ class CreateViewController: BaseViewController {
         super.viewDidLoad()
         configure()
         setupShadow()
+        title = Constants.Create.title
+        setupBackButton()
     }
     
     func configure() {

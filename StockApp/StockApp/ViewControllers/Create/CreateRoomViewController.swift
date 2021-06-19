@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateRoomViewController: UIViewController, UINavigationControllerDelegate {
+class CreateRoomViewController: BaseViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var createRoomView: UIView!
     @IBOutlet weak var roomNameLabel: UILabel!
@@ -40,6 +40,7 @@ class CreateRoomViewController: UIViewController, UINavigationControllerDelegate
 
         configure()
         setupStyling()
+        setupBackButton()
     }
     
     private func configure() {
