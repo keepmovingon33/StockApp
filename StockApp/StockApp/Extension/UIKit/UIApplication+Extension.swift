@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIApplication {
-    // func nay dung de lay Viewcontroller hien tai no dang o dau. Vi du nhu minh muon present 1 man hinh gi do, ma minh hien tai ko nam trong man hinh do, nen minh dung func topViewController nay de lay man hinh do ra
+    // func nay dung de lay Viewcontroller hien tai no dang o dau. Boi vi khi minh viet nhung function helper de display 1 cai gi do tren cai man hinh hien tai, minh ko the goi self.present duoc. Nen minh can cai func nay de lay ra duoc viewcontroller hien tai, va tu do present alert
     static func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)

@@ -87,7 +87,9 @@ class HomeViewController: BaseViewController {
     
     override func rightButtonTap(_: Any) {
         let vc = UIStoryboard.create.instantiateViewController(withIdentifier: self.createIdentifier) as! CreateViewController
-        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

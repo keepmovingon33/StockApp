@@ -24,6 +24,12 @@ class CreateViewController: BaseViewController {
         setupShadow()
         title = Constants.Create.title
         setupBackButton()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        Helpers.showAlert(message: "testing")
     }
     
     func configure() {
@@ -47,7 +53,10 @@ class CreateViewController: BaseViewController {
     
     @objc func createRoomButtonTapped(_ sender: UITapGestureRecognizer? = nil) {
         let vc = UIStoryboard.create.instantiateViewController(withIdentifier: "CreateRoomViewController")
-        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        let navigation = BaseNavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
     }
     
     @IBAction func createStockButtonTapped(_ sender: Any) {

@@ -73,9 +73,14 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func googleButtonTapped(_ sender: Any) {
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.signIn()
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance()?.presentingViewController = self
+//        GIDSignIn.sharedInstance()?.signIn()
+        
+        let vc = UIStoryboard.create.instantiateViewController(withIdentifier: "CreateViewController") as! CreateViewController
+//        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func appleButtonTapped(_ sender: Any) {

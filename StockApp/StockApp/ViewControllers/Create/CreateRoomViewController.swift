@@ -43,6 +43,11 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
         setupBackButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Helpers.showAlert(message: "testing")
+    }
+    
     private func configure() {
         roomNameLabel.attributedText = NSAttributedString(string: Constants.CreateRoom.roomName, attributes: TextFormatting.blackMediumTitle)
         roomNameTextView.attributedText = NSAttributedString(string: Constants.CreateRoom.roomNamePlaceholder, attributes: TextFormatting.grayValue)
@@ -80,7 +85,7 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
     }
 
     @IBAction func finishButtonTapped(_ sender: Any) {
-        
+        AppDelegate.instance.switchToHomeViewController()
     }
     
     @objc func tapPublicRoom(_ sender: UITapGestureRecognizer? = nil) {

@@ -58,6 +58,7 @@ class HomeDetailsViewController: BaseViewController {
         setupPickerView()
         
         searchTextField.delegate = self
+        Helpers.showAlert(message: "Hello")
     }
     
     
