@@ -26,3 +26,9 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
+
+extension UIColor {
+    static let purpleColor = UIColor(hexString: "#3F27B1")
+    static let grayColor = UIColor(hexString: "#8E8E93")
+    static let blackColor = UIColor(hexString: "#333333")
+}
