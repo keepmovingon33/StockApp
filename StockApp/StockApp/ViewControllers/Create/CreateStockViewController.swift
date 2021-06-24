@@ -20,7 +20,7 @@ class CreateStockViewController: BaseViewController {
     @IBOutlet weak var priceSeparatorView: UIView!
     @IBOutlet weak var holdingTimeView: UIView!
     @IBOutlet weak var holdingTimeLabel: UILabel!
-    @IBOutlet weak var holdingTimeValueLabel: UILabel!
+    @IBOutlet weak var holdingTimeTextField: UITextField!
     @IBOutlet weak var holdingTimeImage: UIImageView!
     @IBOutlet weak var holdingTimeSeparatorView: UIView!
     
@@ -42,6 +42,7 @@ class CreateStockViewController: BaseViewController {
     
     var rooms: [String] = [Constants.CreateStock.publishValue1, Constants.CreateStock.publishValue2, Constants.CreateStock.publishValue3]
     var selectRoomAt: Int = 0
+    var pickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,30 +52,34 @@ class CreateStockViewController: BaseViewController {
         setupStyling()
         title = Constants.CreateStock.title
         setupBackButton()
+        setupPickerView()
     }
     
     private func configure() {
         stockCodeLabel.attributedText = NSAttributedString(string: Constants.CreateStock.stockCode, attributes: TextFormatting.blackMediumTitle)
         stockCodeTextField.placeholder = Constants.CreateStock.stockCodePlaceholder
         stockCodeTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        stockCodeTextField.textColor = UIColor.grayColor
+        stockCodeTextField.textColor = UIColor.blackColor
         stockCodeTextField.borderStyle = .none
         stockCodeSeparator.backgroundColor = UIColor.grayColor
         
         priceLabel.attributedText = NSAttributedString(string: Constants.CreateStock.price, attributes: TextFormatting.blackMediumTitle)
         priceLabelTextField.placeholder = Constants.CreateStock.pricePlaceholder
         priceLabelTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        priceLabelTextField.textColor = UIColor.grayColor
+        priceLabelTextField.textColor = UIColor.blackColor
         priceLabelTextField.borderStyle = .none
         priceSeparatorView.backgroundColor = UIColor.grayColor
 
         holdingTimeLabel.attributedText = NSAttributedString(string: Constants.CreateStock.holdingTime, attributes: TextFormatting.blackMediumTitle)
-        holdingTimeValueLabel.attributedText = NSAttributedString(string: Constants.CreateStock.holdingTimeValue, attributes: TextFormatting.purpleValue)
+        holdingTimeTextField.font = UIFont.systemFont(ofSize: 14)
+        holdingTimeTextField.textColor = UIColor.purpleColor
         holdingTimeImage.image = UIImage(named: "dropdown")
         holdingTimeSeparatorView.backgroundColor = UIColor.grayColor
         
         noteLabel.attributedText = NSAttributedString(string: Constants.CreateStock.note, attributes: TextFormatting.blackMediumTitle)
-        noteTextView.attributedText = NSAttributedString(string: Constants.CreateStock.notePlaceholder, attributes: TextFormatting.grayValue)
+        noteTextView.font = UIFont.systemFont(ofSize: 14)
+        noteTextView.placeholder = Constants.CreateStock.notePlaceholder
+        noteTextView.textColor = UIColor.blackColor
         noteSeparatorView.backgroundColor = UIColor.grayColor
         
         publishLabel.attributedText = NSAttributedString(string: Constants.CreateStock.publish, attributes: TextFormatting.blackMediumTitle)
@@ -101,6 +106,41 @@ class CreateStockViewController: BaseViewController {
         borderView.dropShadow(color: UIColor.shadowColor, opacity: 1, offSet: .zero, radius: 4)
         
     }
+    
+    private func setupPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
+        holdingTimeTextField.inputView = pickerView
+        holdingTimeTextField.borderStyle = .none
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.purpleColor
+        toolBar.sizeToFit()
+  
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.cancelPicker))
+
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        holdingTimeTextField.inputAccessoryView = toolBar
+        
+        donePicker()
+    }
+    
+    @objc func donePicker() {
+        let value = HoldingType.allCases
+        holdingTimeTextField.text = value[pickerView.selectedRow(inComponent: 0)].rawValue
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelPicker() {
+        self.view.endEditing(true)
+    }
 
 }
 
@@ -118,5 +158,19 @@ extension CreateStockViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectRoomAt = indexPath.row
         tableView.reloadData()
+    }
+}
+
+extension CreateStockViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return HoldingType.allCases.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return HoldingType.allCases[row].rawValue
     }
 }

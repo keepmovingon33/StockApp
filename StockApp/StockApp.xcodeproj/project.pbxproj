@@ -48,6 +48,7 @@
 		33699BE8265DCA4500E3990F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */; };
 		33699BED265E9BE100E3990F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33699BEC265E9BE100E3990F /* LoginModel.swift */; };
 		338C5588260B79B90035F92B /* BrokerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C5587260B79B90035F92B /* BrokerModel.swift */; };
+		339A22CD26840597006A1D08 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A22CC26840597006A1D08 /* UITextView+Extension.swift */; };
 		33B44A222661C95D006616B8 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B44A212661C95D006616B8 /* BaseNavigationController.swift */; };
 		33B44A3026629514006616B8 /* RedirectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B44A2F26629514006616B8 /* RedirectViewController.swift */; };
 		33B44A3526629924006616B8 /* AppDelegate+RedirectUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B44A3426629924006616B8 /* AppDelegate+RedirectUI.swift */; };
@@ -135,6 +136,7 @@
 		33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		33699BEC265E9BE100E3990F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		338C5587260B79B90035F92B /* BrokerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerModel.swift; sourceTree = "<group>"; };
+		339A22CC26840597006A1D08 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		33B44A212661C95D006616B8 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		33B44A2F26629514006616B8 /* RedirectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectViewController.swift; sourceTree = "<group>"; };
 		33B44A3426629924006616B8 /* AppDelegate+RedirectUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+RedirectUI.swift"; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				33DE8AB725FD89CB00CDA344 /* UIImageView+Extension.swift */,
 				33DE8AC625FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift */,
 				33699BE7265DCA4500E3990F /* UIApplication+Extension.swift */,
+				339A22CC26840597006A1D08 /* UITextView+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				3340ECC2265588B900AC5781 /* LoginViewController.swift in Sources */,
 				3368AAFE25F306B000D8D360 /* Formatting.swift in Sources */,
 				33DE8ABF25FD97A000CDA344 /* Date+Extension.swift in Sources */,
+				339A22CD26840597006A1D08 /* UITextView+Extension.swift in Sources */,
 				33699B972656926500E3990F /* CreateViewController.swift in Sources */,
 				33B44A3026629514006616B8 /* RedirectViewController.swift in Sources */,
 				338C5588260B79B90035F92B /* BrokerModel.swift in Sources */,

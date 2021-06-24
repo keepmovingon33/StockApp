@@ -608,14 +608,13 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1f-iu-ARQ">
-                                                                <rect key="frame" x="16" y="40.5" width="41.5" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RnB-Ui-9H4">
+                                                                <rect key="frame" x="16" y="40.5" width="32" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krT-kh-5Lw">
-                                                                <rect key="frame" x="67.5" y="46" width="10" height="10"/>
+                                                                <rect key="frame" x="58" y="52.5" width="10" height="10"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="10" id="1ht-Vb-B1C"/>
                                                                     <constraint firstAttribute="width" secondItem="krT-kh-5Lw" secondAttribute="height" multiplier="1:1" id="FsF-Cg-jz0"/>
@@ -631,13 +630,14 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="Y1f-iu-ARQ" firstAttribute="leading" secondItem="YDo-Qu-QIs" secondAttribute="leading" constant="16" id="JYJ-1w-KPp"/>
-                                                            <constraint firstItem="Y1f-iu-ARQ" firstAttribute="top" secondItem="bQn-eh-tFQ" secondAttribute="bottom" constant="8" id="Qkd-a0-0lQ"/>
+                                                            <constraint firstItem="RnB-Ui-9H4" firstAttribute="top" secondItem="bQn-eh-tFQ" secondAttribute="bottom" constant="8" id="0zC-zp-Lgs"/>
+                                                            <constraint firstItem="krT-kh-5Lw" firstAttribute="leading" secondItem="RnB-Ui-9H4" secondAttribute="trailing" constant="10" id="BGH-Uc-Qau"/>
+                                                            <constraint firstItem="RnB-Ui-9H4" firstAttribute="leading" secondItem="YDo-Qu-QIs" secondAttribute="leading" constant="16" id="DGd-2P-eB0"/>
+                                                            <constraint firstItem="krT-kh-5Lw" firstAttribute="centerY" secondItem="RnB-Ui-9H4" secondAttribute="centerY" id="YcV-ts-p9E"/>
                                                             <constraint firstItem="g1W-HM-wTG" firstAttribute="leading" secondItem="YDo-Qu-QIs" secondAttribute="leading" constant="16" id="YpX-1c-285"/>
-                                                            <constraint firstItem="krT-kh-5Lw" firstAttribute="leading" secondItem="Y1f-iu-ARQ" secondAttribute="trailing" constant="10" id="dOD-w3-KhF"/>
                                                             <constraint firstAttribute="trailing" secondItem="g1W-HM-wTG" secondAttribute="trailing" constant="16" id="dqQ-8o-QJd"/>
                                                             <constraint firstItem="bQn-eh-tFQ" firstAttribute="leading" secondItem="YDo-Qu-QIs" secondAttribute="leading" constant="16" id="gyz-Dz-g3s"/>
-                                                            <constraint firstItem="krT-kh-5Lw" firstAttribute="centerY" secondItem="Y1f-iu-ARQ" secondAttribute="centerY" id="mxR-NW-si4"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="krT-kh-5Lw" secondAttribute="trailing" constant="10" id="j85-Nj-onJ"/>
                                                             <constraint firstItem="bQn-eh-tFQ" firstAttribute="top" secondItem="YDo-Qu-QIs" secondAttribute="top" constant="12" id="pms-OS-9gk"/>
                                                             <constraint firstAttribute="trailing" secondItem="bQn-eh-tFQ" secondAttribute="trailing" constant="16" id="rDg-u7-44i"/>
                                                             <constraint firstAttribute="bottom" secondItem="g1W-HM-wTG" secondAttribute="bottom" id="tss-eO-UDi"/>
@@ -654,6 +654,7 @@
                                                     <constraint firstItem="YDo-Qu-QIs" firstAttribute="width" secondItem="bjs-Gx-bzo" secondAttribute="width" multiplier="0.5" id="jPe-rC-OhE"/>
                                                     <constraint firstItem="Uku-Z5-L57" firstAttribute="width" secondItem="bjs-Gx-bzo" secondAttribute="width" multiplier="0.5" id="jna-0f-Euz"/>
                                                     <constraint firstItem="YDo-Qu-QIs" firstAttribute="top" secondItem="bjs-Gx-bzo" secondAttribute="top" id="lgH-B5-8xZ"/>
+                                                    <constraint firstItem="RnB-Ui-9H4" firstAttribute="bottom" secondItem="JI4-nk-3ts" secondAttribute="bottom" id="zsu-mZ-3Ru"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB4-Rb-JjX" userLabel="View3">
@@ -668,7 +669,6 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6LZ-EF-0xp">
                                                         <rect key="frame" x="12" y="40.5" width="354" height="45.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -874,7 +874,7 @@
                         <outlet property="holdingTimeImage" destination="krT-kh-5Lw" id="IQW-b4-AFi"/>
                         <outlet property="holdingTimeLabel" destination="bQn-eh-tFQ" id="Yhe-hN-bmS"/>
                         <outlet property="holdingTimeSeparatorView" destination="g1W-HM-wTG" id="uXZ-aF-3Ud"/>
-                        <outlet property="holdingTimeValueLabel" destination="Y1f-iu-ARQ" id="jHL-Um-g2f"/>
+                        <outlet property="holdingTimeTextField" destination="RnB-Ui-9H4" id="pT6-B6-GTX"/>
                         <outlet property="holdingTimeView" destination="YDo-Qu-QIs" id="ZFQ-dR-Sc9"/>
                         <outlet property="noteLabel" destination="GPr-M4-VuX" id="2Gs-ry-8tB"/>
                         <outlet property="noteSeparatorView" destination="qMb-nZ-jda" id="ZJj-mg-ReH"/>

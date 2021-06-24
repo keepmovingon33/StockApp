@@ -45,11 +45,15 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
     
     private func configure() {
         roomNameLabel.attributedText = NSAttributedString(string: Constants.CreateRoom.roomName, attributes: TextFormatting.blackMediumTitle)
-        roomNameTextView.attributedText = NSAttributedString(string: Constants.CreateRoom.roomNamePlaceholder, attributes: TextFormatting.grayValue)
+        roomNameTextView.font = UIFont.systemFont(ofSize: 14)
+        roomNameTextView.placeholder = Constants.CreateRoom.roomName
+        roomNameTextView.textColor = UIColor.blackColor
         roomNameSeparatorView.backgroundColor = UIColor.grayColor
         roomAvatarImage.image = #imageLiteral(resourceName: "camera")
         noteLabel.attributedText = NSAttributedString(string: Constants.CreateRoom.note, attributes: TextFormatting.blackMediumTitle)
-        noteTextView.attributedText = NSAttributedString(string: Constants.CreateRoom.notePlaceholder, attributes: TextFormatting.grayValue)
+        noteTextView.font = UIFont.systemFont(ofSize: 14)
+        noteTextView.placeholder = Constants.CreateRoom.notePlaceholder
+        noteTextView.textColor = UIColor.blackColor
         roomMode.attributedText = NSAttributedString(string: Constants.CreateRoom.roomMode, attributes: TextFormatting.blackMediumTitle)
         notePublicImage.image = UIImage(named: "icon_check")
         notePrivateImage.image = UIImage(named: "unselected")
