@@ -22,6 +22,7 @@ class CreateStockViewController: BaseViewController {
     @IBOutlet weak var holdingTimeLabel: UILabel!
     @IBOutlet weak var holdingTimeTextField: UITextField!
     @IBOutlet weak var holdingTimeImage: UIImageView!
+    @IBOutlet weak var holdingTimeValueLabel: UILabel!
     @IBOutlet weak var holdingTimeSeparatorView: UIView!
     
     @IBOutlet weak var noteLabel: UILabel!
@@ -71,8 +72,6 @@ class CreateStockViewController: BaseViewController {
         priceSeparatorView.backgroundColor = UIColor.grayColor
 
         holdingTimeLabel.attributedText = NSAttributedString(string: Constants.CreateStock.holdingTime, attributes: TextFormatting.blackMediumTitle)
-        holdingTimeTextField.font = UIFont.systemFont(ofSize: 14)
-        holdingTimeTextField.textColor = UIColor.purpleColor
         holdingTimeImage.image = UIImage(named: "dropdown")
         holdingTimeSeparatorView.backgroundColor = UIColor.grayColor
         
@@ -113,6 +112,9 @@ class CreateStockViewController: BaseViewController {
 
         holdingTimeTextField.inputView = pickerView
         holdingTimeTextField.borderStyle = .none
+        // tintColor cho 1 textField chinh la dau nhay khi minh click vao textfield do. Khi minh set clear, minh ko thay dau nhay nua
+        // tintColor cho navbar se la mau cua nut back button
+        holdingTimeTextField.tintColor = .clear
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -127,14 +129,15 @@ class CreateStockViewController: BaseViewController {
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
 
+        // adding Done/Cancel button
         holdingTimeTextField.inputAccessoryView = toolBar
-        
+        holdingTimeValueLabel.attributedText = NSAttributedString(string: HoldingType.allCases[0].rawValue, attributes: TextFormatting.purpleValue)
         donePicker()
     }
     
     @objc func donePicker() {
         let value = HoldingType.allCases
-        holdingTimeTextField.text = value[pickerView.selectedRow(inComponent: 0)].rawValue
+        holdingTimeValueLabel.attributedText = NSAttributedString(string: value[pickerView.selectedRow(inComponent: 0)].rawValue, attributes: TextFormatting.purpleValue)
         self.view.endEditing(true)
     }
     

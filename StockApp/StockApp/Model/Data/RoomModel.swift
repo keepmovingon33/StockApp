@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct RoomItemResponse: Decodable {
+    let message: String
+    let code: Int
+    let data: Room?
+}
+
 struct RoomResponse: Decodable {
     let message: String
     let code: Int
