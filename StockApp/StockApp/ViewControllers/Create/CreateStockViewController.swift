@@ -5,6 +5,7 @@
 //  Created by Sky on 5/20/21.
 //
 
+import Alamofire
 import UIKit
 
 class CreateStockViewController: BaseViewController {
@@ -41,9 +42,19 @@ class CreateStockViewController: BaseViewController {
     
     @IBOutlet weak var borderView: UIView!
     
-    var rooms: [String] = [Constants.CreateStock.publishValue1, Constants.CreateStock.publishValue2, Constants.CreateStock.publishValue3]
     var selectRoomAt: Int = 0
     var pickerView = UIPickerView()
+    var rooms: [Room] = []
+    var roomIds: [String] = []
+    
+    static func create(rooms: [Room]) -> CreateStockViewController {
+        guard let vc = UIStoryboard.create.instantiateViewController(withIdentifier: "CreateStockViewController") as? CreateStockViewController else {
+            fatalError("Cannot create CreateStockViewController")
+        }
+        
+        vc.rooms = rooms
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +65,8 @@ class CreateStockViewController: BaseViewController {
         title = Constants.CreateStock.title
         setupBackButton()
         setupPickerView()
+        
+        
     }
     
     private func configure() {
@@ -68,6 +81,7 @@ class CreateStockViewController: BaseViewController {
         priceLabelTextField.placeholder = Constants.CreateStock.pricePlaceholder
         priceLabelTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         priceLabelTextField.textColor = UIColor.blackColor
+        priceLabelTextField.keyboardType = .decimalPad
         priceLabelTextField.borderStyle = .none
         priceSeparatorView.backgroundColor = UIColor.grayColor
 
@@ -131,20 +145,86 @@ class CreateStockViewController: BaseViewController {
 
         // adding Done/Cancel button
         holdingTimeTextField.inputAccessoryView = toolBar
-        holdingTimeValueLabel.attributedText = NSAttributedString(string: HoldingType.allCases[0].rawValue, attributes: TextFormatting.purpleValue)
+        holdingTimeValueLabel.attributedText = NSAttributedString(string: String(format: Constants.CreateStock.holdingTimePicker, String(1)), attributes: TextFormatting.purpleValue)
         donePicker()
     }
     
     @objc func donePicker() {
-        let value = HoldingType.allCases
-        holdingTimeValueLabel.attributedText = NSAttributedString(string: value[pickerView.selectedRow(inComponent: 0)].rawValue, attributes: TextFormatting.purpleValue)
+        let value = String(format: Constants.CreateStock.holdingTimePicker, String(pickerView.selectedRow(inComponent: 0) + 1))
+        holdingTimeValueLabel.attributedText = NSAttributedString(string: value, attributes: TextFormatting.purpleValue)
         self.view.endEditing(true)
     }
     
     @objc func cancelPicker() {
         self.view.endEditing(true)
     }
-
+    
+    private func callCreateSignalAPI() {
+        guard let stockCode = stockCodeTextField.text, !stockCode.isEmpty else {
+            Helpers.showAlert(message: "Please input stock code")
+            return
+        }
+        guard let price = priceLabelTextField.text, !price.isEmpty else {
+            Helpers.showAlert(message: "Please input price")
+            return
+        }
+        
+        guard let priceValue = Double(price), priceValue > 0 else {
+            Helpers.showAlert(message: "Price value should be larger than zero")
+            return
+        }
+        
+        let endpoint: String = "https://admin.bstock.vn/api/v3/signals"
+        let parameters = [
+            "stock_code": stockCode,
+            "room_ids": roomIds,
+            "note": noteTextView.text ?? "",
+            "price": priceValue,
+            "holding_time": (pickerView.selectedRow(inComponent: 0) + 1) * 30
+        ] as [String : Any]
+        let headers = HTTPHeaders(["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjIxMTIwOTk2LCJleHAiOjE2MjYzMDQ5OTYsIm5iZiI6MTYyMTEyMDk5NiwianRpIjoidG5NSVJzNmw0M0lTMDRpMyJ9.fdvleFdSNY_nkWvEAs8vWTzj9-JCAgMDCPVxROVooi4"])
+        showLoadingIndicator()
+        AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+                    self.hideLoadingIndicator()
+                    guard let data = response.data else { return }
+            
+            // this snippet code to debug if there is any mapping error
+            do {
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let loginResponse = try decoder.decode(LoginResponse.self, from: data)
+                if let data = loginResponse.data {
+                    // save user
+                    CurrentSession.instance.user = data.user
+                    // save token
+                    CurrentSession.instance.accessToken = data.token
+                    AppDelegate.instance.switchToHomeViewController()
+                } else {
+                    Helpers.showAlert(message: loginResponse.message)
+                }
+                
+            } catch DecodingError.dataCorrupted(let context) {
+                print(context)
+            } catch DecodingError.keyNotFound(let key, let context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.valueNotFound(let value, let context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.typeMismatch(let type, let context) {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+        }
+    }
+    
+    @IBAction func finishButtonTapped(_ sender: Any) {
+        callCreateSignalAPI()
+    }
 }
 
 extension CreateStockViewController: UITableViewDelegate, UITableViewDataSource {
@@ -154,12 +234,17 @@ extension CreateStockViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PublishTableViewCell.identifier) as! PublishTableViewCell
-        cell.configure(isSelected: selectRoomAt == indexPath.row, name: rooms[indexPath.row])
+        cell.configure(isSelected: roomIds.contains(rooms[indexPath.row].id), name: rooms[indexPath.row].name)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectRoomAt = indexPath.row
+        let id = rooms[indexPath.row].id
+        if let index = roomIds.firstIndex(of: id) {
+            roomIds.remove(at: index)
+        } else {
+            roomIds.append(id)
+        }
         tableView.reloadData()
     }
 }
@@ -170,10 +255,10 @@ extension CreateStockViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return HoldingType.allCases.count
+        return 24
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return HoldingType.allCases[row].rawValue
+        return String(format: Constants.CreateStock.holdingTimePicker, String(row + 1))
     }
 }

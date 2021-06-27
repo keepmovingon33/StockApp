@@ -39,7 +39,9 @@ class RedirectViewController: BaseViewController {
         let endpoint: String = "https://admin.bstock.vn/api/user"
         let headers = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded",
                                   "Accept": "application/json",
-                                  "Authorization": "Bearer \(token)"])
+//                                  "Authorization": "Bearer \(token)"
+                                  "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjIxMTIwOTk2LCJleHAiOjE2MjYzMDQ5OTYsIm5iZiI6MTYyMTEyMDk5NiwianRpIjoidG5NSVJzNmw0M0lTMDRpMyJ9.fdvleFdSNY_nkWvEAs8vWTzj9-JCAgMDCPVxROVooi4"
+        ])
         showLoadingIndicator()
         AF.request(endpoint, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { response in
             self.hideLoadingIndicator()
