@@ -61,6 +61,7 @@
 		33C7DB6125F97E780077D501 /* BrokerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB5F25F97E770077D501 /* BrokerViewCell.swift */; };
 		33C7DB6225F97E780077D501 /* BrokerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C7DB6025F97E770077D501 /* BrokerViewCell.xib */; };
 		33C7DB6725FBAFF10077D501 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C7DB6625FBAFF10077D501 /* BaseViewController.swift */; };
+		33CF3583268951C900A2FAB6 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF3582268951C900A2FAB6 /* BaseModel.swift */; };
 		33DE8AB825FD89CB00CDA344 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE8AB725FD89CB00CDA344 /* UIImageView+Extension.swift */; };
 		33DE8ABF25FD97A000CDA344 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE8ABE25FD97A000CDA344 /* Date+Extension.swift */; };
 		33DE8AC725FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE8AC625FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift */; };
@@ -149,6 +150,7 @@
 		33C7DB5F25F97E770077D501 /* BrokerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerViewCell.swift; sourceTree = "<group>"; };
 		33C7DB6025F97E770077D501 /* BrokerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrokerViewCell.xib; sourceTree = "<group>"; };
 		33C7DB6625FBAFF10077D501 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		33CF3582268951C900A2FAB6 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		33DE8AB725FD89CB00CDA344 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		33DE8ABE25FD97A000CDA344 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		33DE8AC625FED42F00CDA344 /* UICollectionView+AlignFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+AlignFlowLayout.swift"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				338C5587260B79B90035F92B /* BrokerModel.swift */,
 				3340ECA6265156E300AC5781 /* RoomModel.swift */,
 				33699BEC265E9BE100E3990F /* LoginModel.swift */,
+				33CF3582268951C900A2FAB6 /* BaseModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				3368AB4E25F59E0C00D8D360 /* UICollectionView+Extension.swift in Sources */,
 				3363E92825FC4554009297E8 /* HomeModel.swift in Sources */,
 				33DE8AB825FD89CB00CDA344 /* UIImageView+Extension.swift in Sources */,
+				33CF3583268951C900A2FAB6 /* BaseModel.swift in Sources */,
 				3368AB1425F519D900D8D360 /* HomeViewController.swift in Sources */,
 				3368AAAC25F057A600D8D360 /* SceneDelegate.swift in Sources */,
 				33699BE8265DCA4500E3990F /* UIApplication+Extension.swift in Sources */,

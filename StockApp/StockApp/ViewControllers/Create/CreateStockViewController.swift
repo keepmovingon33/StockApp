@@ -194,15 +194,12 @@ class CreateStockViewController: BaseViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                let loginResponse = try decoder.decode(LoginResponse.self, from: data)
-                if let data = loginResponse.data {
-                    // save user
-                    CurrentSession.instance.user = data.user
-                    // save token
-                    CurrentSession.instance.accessToken = data.token
-                    AppDelegate.instance.switchToHomeViewController()
+                let baseResponse = try decoder.decode(BaseResponse.self, from: data)
+                if baseResponse.code == 1 {
+                    self.navigationController?.popToRootViewController(animated: true)
+                    Helpers.showAlert(message: "Create signal successfully")
                 } else {
-                    Helpers.showAlert(message: loginResponse.message)
+                    Helpers.showAlert(message: baseResponse.message)
                 }
                 
             } catch DecodingError.dataCorrupted(let context) {
