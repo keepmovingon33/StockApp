@@ -105,8 +105,8 @@ class LoginViewController: BaseViewController {
         ] as [String : Any]
         showLoadingIndicator()
         AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            self.hideLoadingIndicator()
-            guard let data = response.data else { return }
+                    self.hideLoadingIndicator()
+                    guard let data = response.data else { return }
             
             // this snippet code to debug if there is any mapping error
             do {

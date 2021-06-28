@@ -55,6 +55,7 @@ struct User: Decodable {
     let birthday: Date?
     let desc: String?
     var isActiveLately: Bool = true
+    let ownRooms: [Room]?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -81,6 +82,7 @@ struct User: Decodable {
         birthday = try? values.decode(Date.self, forKey: .birthday)
         desc = try? values.decode(String.self, forKey: .desc)
         isActiveLately = try values.decode(Bool.self, forKey: .isActiveLately)
+        ownRooms = try? values.decode([Room].self, forKey: .ownRooms)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -107,6 +109,7 @@ struct User: Decodable {
         case birthday
         case desc = "description"
         case isActiveLately = "is_active_lately"
+        case ownRooms = "own_rooms"
     }
     
     enum RoleId: Int, Decodable {

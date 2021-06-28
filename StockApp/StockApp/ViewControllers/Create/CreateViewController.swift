@@ -42,7 +42,6 @@ class CreateViewController: BaseViewController {
     func setupShadow() {
         createStockView.dropShadow(color: UIColor.shadowColor, opacity: 1, offSet: .zero, radius: 4)
         createRoomView.dropShadow(color: UIColor.shadowColor, opacity: 1, offSet: .zero, radius: 4)
-        
     }
     
     @objc func createRoomButtonTapped(_ sender: UITapGestureRecognizer? = nil) {
@@ -51,9 +50,11 @@ class CreateViewController: BaseViewController {
     }
     
     @IBAction func createStockButtonTapped(_ sender: Any) {
-        let vc = UIStoryboard.create.instantiateViewController(withIdentifier: "CreateStockViewController")
+        guard let rooms = CurrentSession.instance.user?.ownRooms, rooms.count > 0 else {
+            Helpers.showAlert(message: "Please create a room before create a stock")
+            return
+        }
+        let vc = CreateStockViewController.create(rooms: rooms)
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }

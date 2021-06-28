@@ -14,6 +14,12 @@ enum FilterType: String, CaseIterable {
     case sevenMonths = "7 Tháng Gần Đây"
 }
 
+enum HoldingType: String, CaseIterable {
+    case twoyears = "Dưới 24 Tháng"
+    case oneyear = "Dưới 12 Tháng"
+    case sixmonths = "Dưới 6 Tháng"
+}
+
 enum SortingType: String, CaseIterable {
     case avg_winrate = "Tỉ Lệ Thắng"
     case member = "Số Thành Viên"

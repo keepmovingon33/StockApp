@@ -102,5 +102,6 @@ struct Constants {
         static let publishValue3 = "Sóng To Cá Lớn"
         static let finishButton = "Hoàn Thành"
         static let title = "Tạo Mã Cổ Phiếu Mới"
+        static let holdingTimePicker = "Dưới %@ tháng"
     }
 }

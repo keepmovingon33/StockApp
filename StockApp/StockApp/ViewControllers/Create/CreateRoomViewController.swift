@@ -5,6 +5,7 @@
 //  Created by Sky on 5/20/21.
 //
 
+import Alamofire
 import UIKit
 
 class CreateRoomViewController: BaseViewController, UINavigationControllerDelegate {
@@ -35,6 +36,8 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
     @IBOutlet weak var roomModePrivateView: UIView!
     @IBOutlet weak var roomModeSecretView: UIView!
     
+    var roomType: Room.RoomType = .publication
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,11 +48,15 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
     
     private func configure() {
         roomNameLabel.attributedText = NSAttributedString(string: Constants.CreateRoom.roomName, attributes: TextFormatting.blackMediumTitle)
-        roomNameTextView.attributedText = NSAttributedString(string: Constants.CreateRoom.roomNamePlaceholder, attributes: TextFormatting.grayValue)
+        roomNameTextView.font = UIFont.systemFont(ofSize: 14)
+        roomNameTextView.placeholder = Constants.CreateRoom.roomName
+        roomNameTextView.textColor = UIColor.blackColor
         roomNameSeparatorView.backgroundColor = UIColor.grayColor
         roomAvatarImage.image = #imageLiteral(resourceName: "camera")
         noteLabel.attributedText = NSAttributedString(string: Constants.CreateRoom.note, attributes: TextFormatting.blackMediumTitle)
-        noteTextView.attributedText = NSAttributedString(string: Constants.CreateRoom.notePlaceholder, attributes: TextFormatting.grayValue)
+        noteTextView.font = UIFont.systemFont(ofSize: 14)
+        noteTextView.placeholder = Constants.CreateRoom.notePlaceholder
+        noteTextView.textColor = UIColor.blackColor
         roomMode.attributedText = NSAttributedString(string: Constants.CreateRoom.roomMode, attributes: TextFormatting.blackMediumTitle)
         notePublicImage.image = UIImage(named: "icon_check")
         notePrivateImage.image = UIImage(named: "unselected")
@@ -78,23 +85,86 @@ class CreateRoomViewController: BaseViewController, UINavigationControllerDelega
         let tapSecretView = UITapGestureRecognizer(target: self, action: #selector(tapSecretRoom(_:)))
         roomModeSecretView.addGestureRecognizer(tapSecretView)
     }
+    
+    private func callCreateNewRoomAPI() {
+        guard let name = roomNameTextView.text, !name.isEmpty else {
+            Helpers.showAlert(message: "Please input room name")
+            return
+        }
+        let imageData = roomAvatarImage.image?.jpegData(compressionQuality: 1)
+        let endpoint: String = "https://admin.bstock.vn/api/rooms"
+        let parameters = [
+            "name" : name,
+            "description" : noteTextView.text ?? "",
+            "type" : roomType.rawValue,
+        ] as [String : Any]
+        let headers = HTTPHeaders(["Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMzFhY2dieTZvdSIsInJvbGUiOjIsInN1YiI6IjMxYWNnYnk2b3UiLCJpc3MiOiJodHRwczovL2FkbWluLmJzdG9jay52bi9hcGkvc29jaWFsLWxvZ2luIiwiaWF0IjoxNjIxMTIwOTk2LCJleHAiOjE2MjYzMDQ5OTYsIm5iZiI6MTYyMTEyMDk5NiwianRpIjoidG5NSVJzNmw0M0lTMDRpMyJ9.fdvleFdSNY_nkWvEAs8vWTzj9-JCAgMDCPVxROVooi4"])
+        showLoadingIndicator()
+        AF.upload(multipartFormData: { multipartFormData in
+            for (key, value) in parameters {
+                if let temp = value as? String {
+                    multipartFormData.append(temp.data(using: .utf8)!, withName: key)
+                }
+            }
+                    
+            if let data = imageData{
+                multipartFormData.append(data, withName: "avatar", fileName: "\(Date.init().timeIntervalSince1970).png", mimeType: "image/png")
+            }
+        }, to: endpoint, method: .post, headers: headers)
+        .responseJSON { response in
+            self.hideLoadingIndicator()
+            guard let data = response.data else { return }
+            
+            // this snippet code to debug if there is any mapping error
+            do {
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let roomResponse = try decoder.decode(RoomItemResponse.self, from: data)
+                if let _ = roomResponse.data {
+                    self.dismiss(animated: true) {
+                        Helpers.showAlert(message: "Tao phong thanh cong")
+                    }
+                } else {
+                    Helpers.showAlert(message: roomResponse.message)
+                }
+            } catch DecodingError.dataCorrupted(let context) {
+                print(context)
+            } catch DecodingError.keyNotFound(let key, let context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.valueNotFound(let value, let context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch DecodingError.typeMismatch(let type, let context) {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+        }
+    }
 
     @IBAction func finishButtonTapped(_ sender: Any) {
-        
+        callCreateNewRoomAPI()
     }
     
     @objc func tapPublicRoom(_ sender: UITapGestureRecognizer? = nil) {
         resetRoomModeTapped()
+        roomType = .publication
         notePublicImage.image = UIImage(named: "icon_check")
     }
     
     @objc func tapPrivateRoom(_ sender: UITapGestureRecognizer? = nil) {
         resetRoomModeTapped()
+        roomType = .privacy
         notePrivateImage.image = UIImage(named: "icon_check")
     }
     
     @objc func tapSecretRoom(_ sender: UITapGestureRecognizer? = nil) {
         resetRoomModeTapped()
+        roomType = .closed
         noteSecretImage.image = UIImage(named: "icon_check")
     }
     
